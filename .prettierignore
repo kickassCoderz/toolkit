@@ -1,0 +1,5 @@
+pnpm-lock.yaml
+app/routeTree.gen.ts
+.output
+.vinxi
+styled-system

@@ -1,0 +1,24 @@
+{
+    "name": "@kickass-coderz/prettier-config",
+    "version": "0.0.0",
+    "description": "KickassCoderz's Prettier config for Javascript and Typescript projects",
+    "license": "MIT",
+    "type": "module",
+    "exports": "./index.js",
+    "scripts": {
+        "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+        "lint": "eslint . --max-warnings 0"
+    },
+    "dependencies": {
+        "prettier-plugin-packagejson": "^2.5.6"
+    },
+    "devDependencies": {
+        "@kickass-coderz/eslint-config": "workspace:*"
+    },
+    "peerDependencies": {
+        "prettier": ">=3 <4"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}
