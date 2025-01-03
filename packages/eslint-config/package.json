@@ -1,6 +1,6 @@
 {
     "name": "@kickass-coderz/eslint-config",
-    "version": "1.0.1",
+    "version": "0.0.0",
     "description": "KickassCoderz's EsLint config's for JS/TS ecosystem",
     "license": "MIT",
     "type": "module",

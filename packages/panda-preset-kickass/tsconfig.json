@@ -1,0 +1,10 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "display": "panda-preset-kickass",
+    "extends": "@kickass-coderz/ts-config/base.json",
+    "compilerOptions": {
+        "lib": ["ESNext"]
+    },
+    "include": ["src"],
+    "exclude": ["node_modules"]
+}

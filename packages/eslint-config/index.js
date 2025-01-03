@@ -1,14 +1,14 @@
 //@ts-check
 import eslint from "@eslint/js";
+import pluginNext from "@next/eslint-plugin-next";
+import eslintConfigPrettier from "eslint-config-prettier";
+import jsxA11y from "eslint-plugin-jsx-a11y";
+import reactPlugin from "eslint-plugin-react";
+import reactHooks from "eslint-plugin-react-hooks";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import globals from "globals";
-import reactPlugin from "eslint-plugin-react";
-import reactHooks from "eslint-plugin-react-hooks";
-import jsxA11y from "eslint-plugin-jsx-a11y";
-import pluginNext from "@next/eslint-plugin-next";
 import tseslint from "typescript-eslint";
-import eslintConfigPrettier from "eslint-config-prettier";
 
 const base = tseslint.config({
     name: "Base",
@@ -74,14 +74,17 @@ const react = tseslint.config({
     },
     plugins: {
         react: reactPlugin,
+        // @ts-expect-error - types are wrong
         "react-hooks": reactHooks,
         "jsx-a11y": jsxA11y,
     },
+    // @ts-expect-error - types are wrong
     rules: {
         ...reactPlugin.configs.flat?.["recommended"].rules,
         ...reactPlugin.configs.flat?.["jsx-runtime"].rules,
         ...reactHooks.configs.recommended.rules,
         ...jsxA11y.flatConfigs.strict.rules,
+        "react/prefer-read-only-props": "error",
     },
     settings: {
         react: {
@@ -95,6 +98,7 @@ const next = tseslint.config({
     plugins: {
         "@next/next": pluginNext,
     },
+    // @ts-expect-error - types are wrong
     rules: {
         ...pluginNext.configs.recommended.rules,
         ...pluginNext.configs["core-web-vitals"].rules,
@@ -132,4 +136,4 @@ const prettier = tseslint.config({
     name: "Prettier",
 });
 
-export { base, browser, node, react, next, tsTypechecked, tsTypecheckDisabled, prettier };
+export { base, browser, next, node, prettier, react, tsTypecheckDisabled, tsTypechecked };

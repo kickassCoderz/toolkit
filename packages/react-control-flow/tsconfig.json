@@ -1,0 +1,11 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "display": "react-control-flow",
+    "extends": "@kickass-coderz/ts-config/base.json",
+    "compilerOptions": {
+        "jsx": "preserve",
+        "lib": ["ESNext", "DOM", "DOM.Iterable"]
+    },
+    "include": ["src"],
+    "exclude": ["node_modules"]
+}

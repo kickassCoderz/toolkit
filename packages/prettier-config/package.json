@@ -13,7 +13,9 @@
         "prettier-plugin-packagejson": "^2.5.6"
     },
     "devDependencies": {
-        "@kickass-coderz/eslint-config": "workspace:*"
+        "@kickass-coderz/eslint-config": "workspace:*",
+        "eslint": "^9.17.0",
+        "typescript-eslint": "^8.19.0"
     },
     "peerDependencies": {
         "prettier": ">=3 <4"
