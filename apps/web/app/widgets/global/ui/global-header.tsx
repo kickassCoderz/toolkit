@@ -1,10 +1,10 @@
 import { Link as RouterLink } from "@tanstack/react-router";
-import { LogInIcon } from "lucide-react";
 
 import { Logo } from "~shared/components/logo";
 import { Icon } from "~shared/design-system/icon";
 import { IconButton } from "~shared/design-system/icon-button";
 import { Link } from "~shared/design-system/typography/link";
+import { GithubIcon } from "~shared/icons/github-icon";
 import { sva } from "~styled-system/css";
 import { container } from "~styled-system/patterns";
 
@@ -125,14 +125,19 @@ export function GlobalHeader() {
                         radius="rounded"
                         size="sm"
                         variant="ghost"
+                        highContrast
                         css={{ colorPalette: "neutral" }}
-                        aria-label="sign in"
+                        aria-label="Toolkit on Github"
                     >
-                        <RouterLink to="/sign-in">
+                        <a
+                            href="https://github.com/kickassCoderz/toolkit"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
                             <Icon>
-                                <LogInIcon />
+                                <GithubIcon />
                             </Icon>
-                        </RouterLink>
+                        </a>
                     </IconButton>
                 </div>
             </div>
