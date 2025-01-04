@@ -13,6 +13,11 @@ export const typography = defineRecipe({
     jsx: ["Text", "Heading", "Em", "Strong", "Quote", "Link", "Code", "Kbd"],
     base: {},
     variants: {
+        srOnly: {
+            true: {
+                srOnly: true,
+            },
+        },
         truncate: {
             true: {
                 truncate: true,

@@ -86,12 +86,12 @@ export function GlobalHeader() {
                                     weight="medium"
                                 >
                                     <RouterLink
-                                        to="/examples"
+                                        to="/packages"
                                         activeProps={{
                                             "data-active": "",
                                         }}
                                     >
-                                        Examples
+                                        Packages
                                     </RouterLink>
                                 </Link>
                             </li>

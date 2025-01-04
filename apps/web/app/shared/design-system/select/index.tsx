@@ -118,7 +118,7 @@ export function Select<T extends CollectionItem>({
     ...rest
 }: SelectProperties<T>) {
     return (
-        <SelectRoot {...rest}>
+        <SelectRoot positioning={{ placement: "bottom" }} {...rest}>
             <ArkSelect.HiddenSelect />
             <SelectControl>
                 <SelectTrigger>

@@ -10,6 +10,7 @@ import { iconButton } from "./icon-button";
 import { inputField } from "./input-field";
 import { numberInput } from "./number-input";
 import { radioGroup } from "./radio-group";
+import { section } from "./section";
 import { segmentGroup } from "./segment-group";
 import { select } from "./select";
 import { skeleton } from "./skeleton";
@@ -30,6 +31,7 @@ export const recipes = {
     badge,
     skeleton,
     textarea,
+    section,
 };
 
 export const slotRecipes = {
