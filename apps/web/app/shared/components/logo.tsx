@@ -1,5 +1,6 @@
-import { Link } from "@tanstack/react-router";
+import { Link, type LinkOptions } from "@tanstack/react-router";
 import { BoltIcon } from "lucide-react";
+import type React from "react";
 
 import { Icon } from "~shared/design-system/icon";
 import { cx, type RecipeVariantProps, sva } from "~styled-system/css";
@@ -85,27 +86,52 @@ const logoRecipe = sva({
                     textStyle: "3xl",
                 },
             },
+            xl: {
+                root: {
+                    gap: "4",
+                    transition: "mask-position 0.7s ease",
+                },
+                icon: {
+                    width: "16",
+                    height: "16",
+                    borderRadius: "3xl",
+                    fontSize: "4xl",
+                },
+                text: { textStyle: "4xl" },
+            },
         },
     },
 });
 
 type LogoProperties = Readonly<
-    RecipeVariantProps<typeof logoRecipe> & {
-        className?: string | undefined;
-    }
+    LinkOptions &
+        RecipeVariantProps<typeof logoRecipe> & {
+            className?: string | undefined;
+            icon?: React.JSX.Element;
+            label?: React.ReactNode;
+        }
 >;
 
-export function Logo({ hideText, interactive, size = "md", className }: LogoProperties) {
+export function Logo({
+    hideText,
+    interactive,
+    size = "md",
+    icon = (
+        <Icon>
+            <BoltIcon />
+        </Icon>
+    ),
+    label = "Kickass Toolkit",
+    to = "/",
+    className,
+    ...rest
+}: LogoProperties) {
     const classes = logoRecipe({ hideText, size, interactive });
 
     return (
-        <Link to="/" className={cx(classes.root, className)}>
-            <span className={classes.icon}>
-                <Icon>
-                    <BoltIcon />
-                </Icon>
-            </span>
-            <span className={classes.text}>Kickass Toolkit</span>
+        <Link to={to} {...rest} className={cx(classes.root, className)}>
+            <span className={classes.icon}>{icon}</span>
+            <span className={classes.text}>{label}</span>
         </Link>
     );
 }

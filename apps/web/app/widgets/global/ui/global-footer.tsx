@@ -10,9 +10,14 @@ const footerRecipe = sva({
     base: {
         root: {
             width: "full",
-            backgroundColor: "background.translucent",
             backdropFilter: "auto",
             backdropBlur: "3xl",
+            backgroundGradient: "to-r",
+            gradientFrom: "background.translucent",
+            gradientVia: "neutral.a2",
+            gradientTo: "background.translucent",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
         },
         toolbar: container.raw({
             position: "relative",
@@ -22,8 +27,6 @@ const footerRecipe = sva({
             alignItems: "center",
             borderImageSource:
                 "linear-gradient(90deg, {colors.background.translucent} 0, {colors.neutral.a6} 55%, {colors.background.translucent})",
-            // borderImageSource:
-            //     "linear-gradient(90deg, hsla(0, 0%, 100%, 0) 0, hsla(0, 0%, 100%, .2) 55%, hsla(0, 0%, 100%, 0))",
             borderTopWidth: "1px",
             borderTopStyle: "solid",
             borderImageSlice: "1",

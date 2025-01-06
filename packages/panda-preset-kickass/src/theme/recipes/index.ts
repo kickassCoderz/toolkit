@@ -8,6 +8,7 @@ import { fieldset } from "./fieldset";
 import { icon } from "./icon";
 import { iconButton } from "./icon-button";
 import { inputField } from "./input-field";
+import { menu } from "./menu";
 import { numberInput } from "./number-input";
 import { radioGroup } from "./radio-group";
 import { section } from "./section";
@@ -51,4 +52,5 @@ export const slotRecipes = {
     numberInput,
     table,
     spinner,
+    menu,
 };

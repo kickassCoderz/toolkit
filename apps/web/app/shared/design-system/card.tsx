@@ -1,3 +1,5 @@
+import { ark, type PolymorphicProps } from "@ark-ui/react/factory";
+
 import { card, type CardVariantProps } from "~styled-system/recipes";
 import type { Assign, ComponentProps, HTMLStyledProps } from "~styled-system/types";
 
@@ -8,8 +10,8 @@ const { withProvider, withContext } = createStyleContext(card);
 export type CardRootProperties = ComponentProps<typeof CardRoot>;
 export const CardRoot = withProvider<
     HTMLElement,
-    Assign<HTMLStyledProps<"article">, CardVariantProps>
->("article", "root");
+    Assign<Assign<HTMLStyledProps<"article">, PolymorphicProps>, CardVariantProps>
+>(ark.article, "root");
 
 export const CardHeader = withContext<HTMLElement, HTMLStyledProps<"header">>("header", "header");
 

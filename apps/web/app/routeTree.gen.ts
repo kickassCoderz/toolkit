@@ -14,6 +14,10 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
 import { Route as ShowcaseIndexImport } from './routes/showcase/index'
 import { Route as PackagesIndexImport } from './routes/packages/index'
+import { Route as PackagesKickassUiIndexImport } from './routes/packages/kickass-ui/index'
+import { Route as PackagesKickassUiDocumentationRouteImport } from './routes/packages/kickass-ui/documentation/route'
+import { Route as PackagesKickassUiPlaygroundIndexImport } from './routes/packages/kickass-ui/playground/index'
+import { Route as PackagesKickassUiDocumentationIndexImport } from './routes/packages/kickass-ui/documentation/index'
 
 // Create/Update Routes
 
@@ -34,6 +38,33 @@ const PackagesIndexRoute = PackagesIndexImport.update({
   path: '/packages/',
   getParentRoute: () => rootRoute,
 } as any)
+
+const PackagesKickassUiIndexRoute = PackagesKickassUiIndexImport.update({
+  id: '/packages/kickass-ui/',
+  path: '/packages/kickass-ui/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const PackagesKickassUiDocumentationRouteRoute =
+  PackagesKickassUiDocumentationRouteImport.update({
+    id: '/packages/kickass-ui/documentation',
+    path: '/packages/kickass-ui/documentation',
+    getParentRoute: () => rootRoute,
+  } as any)
+
+const PackagesKickassUiPlaygroundIndexRoute =
+  PackagesKickassUiPlaygroundIndexImport.update({
+    id: '/packages/kickass-ui/playground/',
+    path: '/packages/kickass-ui/playground/',
+    getParentRoute: () => rootRoute,
+  } as any)
+
+const PackagesKickassUiDocumentationIndexRoute =
+  PackagesKickassUiDocumentationIndexImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => PackagesKickassUiDocumentationRouteRoute,
+  } as any)
 
 // Populate the FileRoutesByPath interface
 
@@ -60,21 +91,71 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShowcaseIndexImport
       parentRoute: typeof rootRoute
     }
+    '/packages/kickass-ui/documentation': {
+      id: '/packages/kickass-ui/documentation'
+      path: '/packages/kickass-ui/documentation'
+      fullPath: '/packages/kickass-ui/documentation'
+      preLoaderRoute: typeof PackagesKickassUiDocumentationRouteImport
+      parentRoute: typeof rootRoute
+    }
+    '/packages/kickass-ui/': {
+      id: '/packages/kickass-ui/'
+      path: '/packages/kickass-ui'
+      fullPath: '/packages/kickass-ui'
+      preLoaderRoute: typeof PackagesKickassUiIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/packages/kickass-ui/documentation/': {
+      id: '/packages/kickass-ui/documentation/'
+      path: '/'
+      fullPath: '/packages/kickass-ui/documentation/'
+      preLoaderRoute: typeof PackagesKickassUiDocumentationIndexImport
+      parentRoute: typeof PackagesKickassUiDocumentationRouteImport
+    }
+    '/packages/kickass-ui/playground/': {
+      id: '/packages/kickass-ui/playground/'
+      path: '/packages/kickass-ui/playground'
+      fullPath: '/packages/kickass-ui/playground'
+      preLoaderRoute: typeof PackagesKickassUiPlaygroundIndexImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
 // Create and export the route tree
 
+interface PackagesKickassUiDocumentationRouteRouteChildren {
+  PackagesKickassUiDocumentationIndexRoute: typeof PackagesKickassUiDocumentationIndexRoute
+}
+
+const PackagesKickassUiDocumentationRouteRouteChildren: PackagesKickassUiDocumentationRouteRouteChildren =
+  {
+    PackagesKickassUiDocumentationIndexRoute:
+      PackagesKickassUiDocumentationIndexRoute,
+  }
+
+const PackagesKickassUiDocumentationRouteRouteWithChildren =
+  PackagesKickassUiDocumentationRouteRoute._addFileChildren(
+    PackagesKickassUiDocumentationRouteRouteChildren,
+  )
+
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/packages': typeof PackagesIndexRoute
   '/showcase': typeof ShowcaseIndexRoute
+  '/packages/kickass-ui/documentation': typeof PackagesKickassUiDocumentationRouteRouteWithChildren
+  '/packages/kickass-ui': typeof PackagesKickassUiIndexRoute
+  '/packages/kickass-ui/documentation/': typeof PackagesKickassUiDocumentationIndexRoute
+  '/packages/kickass-ui/playground': typeof PackagesKickassUiPlaygroundIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/packages': typeof PackagesIndexRoute
   '/showcase': typeof ShowcaseIndexRoute
+  '/packages/kickass-ui': typeof PackagesKickassUiIndexRoute
+  '/packages/kickass-ui/documentation': typeof PackagesKickassUiDocumentationIndexRoute
+  '/packages/kickass-ui/playground': typeof PackagesKickassUiPlaygroundIndexRoute
 }
 
 export interface FileRoutesById {
@@ -82,14 +163,39 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/packages/': typeof PackagesIndexRoute
   '/showcase/': typeof ShowcaseIndexRoute
+  '/packages/kickass-ui/documentation': typeof PackagesKickassUiDocumentationRouteRouteWithChildren
+  '/packages/kickass-ui/': typeof PackagesKickassUiIndexRoute
+  '/packages/kickass-ui/documentation/': typeof PackagesKickassUiDocumentationIndexRoute
+  '/packages/kickass-ui/playground/': typeof PackagesKickassUiPlaygroundIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/packages' | '/showcase'
+  fullPaths:
+    | '/'
+    | '/packages'
+    | '/showcase'
+    | '/packages/kickass-ui/documentation'
+    | '/packages/kickass-ui'
+    | '/packages/kickass-ui/documentation/'
+    | '/packages/kickass-ui/playground'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/packages' | '/showcase'
-  id: '__root__' | '/' | '/packages/' | '/showcase/'
+  to:
+    | '/'
+    | '/packages'
+    | '/showcase'
+    | '/packages/kickass-ui'
+    | '/packages/kickass-ui/documentation'
+    | '/packages/kickass-ui/playground'
+  id:
+    | '__root__'
+    | '/'
+    | '/packages/'
+    | '/showcase/'
+    | '/packages/kickass-ui/documentation'
+    | '/packages/kickass-ui/'
+    | '/packages/kickass-ui/documentation/'
+    | '/packages/kickass-ui/playground/'
   fileRoutesById: FileRoutesById
 }
 
@@ -97,12 +203,19 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   PackagesIndexRoute: typeof PackagesIndexRoute
   ShowcaseIndexRoute: typeof ShowcaseIndexRoute
+  PackagesKickassUiDocumentationRouteRoute: typeof PackagesKickassUiDocumentationRouteRouteWithChildren
+  PackagesKickassUiIndexRoute: typeof PackagesKickassUiIndexRoute
+  PackagesKickassUiPlaygroundIndexRoute: typeof PackagesKickassUiPlaygroundIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   PackagesIndexRoute: PackagesIndexRoute,
   ShowcaseIndexRoute: ShowcaseIndexRoute,
+  PackagesKickassUiDocumentationRouteRoute:
+    PackagesKickassUiDocumentationRouteRouteWithChildren,
+  PackagesKickassUiIndexRoute: PackagesKickassUiIndexRoute,
+  PackagesKickassUiPlaygroundIndexRoute: PackagesKickassUiPlaygroundIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -117,7 +230,10 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/packages/",
-        "/showcase/"
+        "/showcase/",
+        "/packages/kickass-ui/documentation",
+        "/packages/kickass-ui/",
+        "/packages/kickass-ui/playground/"
       ]
     },
     "/": {
@@ -128,6 +244,22 @@ export const routeTree = rootRoute
     },
     "/showcase/": {
       "filePath": "showcase/index.tsx"
+    },
+    "/packages/kickass-ui/documentation": {
+      "filePath": "packages/kickass-ui/documentation/route.tsx",
+      "children": [
+        "/packages/kickass-ui/documentation/"
+      ]
+    },
+    "/packages/kickass-ui/": {
+      "filePath": "packages/kickass-ui/index.tsx"
+    },
+    "/packages/kickass-ui/documentation/": {
+      "filePath": "packages/kickass-ui/documentation/index.tsx",
+      "parent": "/packages/kickass-ui/documentation"
+    },
+    "/packages/kickass-ui/playground/": {
+      "filePath": "packages/kickass-ui/playground/index.tsx"
     }
   }
 }

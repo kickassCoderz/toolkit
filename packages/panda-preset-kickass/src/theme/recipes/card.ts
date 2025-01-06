@@ -9,6 +9,7 @@ export const card = defineSlotRecipe({
     jsx: ["Card", "CardRoot"],
     base: {
         root: {
+            outline: "none",
             isolation: "isolate",
             position: "relative",
             borderRadius: `var(${radiusVariable})`,
@@ -27,6 +28,15 @@ export const card = defineSlotRecipe({
                 borderRadius: `var(${radiusVariable})`,
                 backgroundColor: `var(${backgroundColorVariable})`,
             },
+        },
+        header: {
+            width: "full",
+        },
+        body: {
+            width: "full",
+        },
+        footer: {
+            width: "full",
         },
     },
     variants: {
@@ -53,6 +63,13 @@ export const card = defineSlotRecipe({
             },
         },
         size: {
+            "2xs": {
+                root: {
+                    [radiusVariable]: "{radii.md}",
+                    padding: "2",
+                    gap: "2",
+                },
+            },
             xs: {
                 root: {
                     [radiusVariable]: "{radii.lg}",
@@ -108,6 +125,26 @@ export const card = defineSlotRecipe({
             ghost: {
                 root: {
                     [backgroundColorVariable]: "{colors.transparent}",
+
+                    _hover: {
+                        [backgroundColorVariable]: "{colors.neutral.a3}",
+                    },
+
+                    _active: {
+                        [backgroundColorVariable]: "{colors.neutral.a4}",
+                    },
+
+                    _open: {
+                        [backgroundColorVariable]: "{colors.neutral.a4}",
+
+                        _hover: {
+                            [backgroundColorVariable]: "{colors.neutral.a4}",
+                        },
+                    },
+
+                    _focus: {
+                        [backgroundColorVariable]: "{colors.neutral.a3}",
+                    },
                 },
             },
         },
