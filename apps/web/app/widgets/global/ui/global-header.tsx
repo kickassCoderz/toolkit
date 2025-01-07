@@ -15,7 +15,7 @@ const headerRecipe = sva({
             position: "sticky",
             top: "0",
             left: "0",
-            zIndex: "100",
+            zIndex: "sticky",
             width: "full",
             height: "16",
             backgroundColor: "background.translucent",

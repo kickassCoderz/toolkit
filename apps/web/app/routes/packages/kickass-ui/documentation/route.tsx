@@ -1,10 +1,12 @@
-import { createFileRoute, Outlet } from "@tanstack/react-router";
+import { createFileRoute, Link as RouterLink, Outlet } from "@tanstack/react-router";
 
 import { PackageSwitcherMenu } from "~features/packages/ui/package-switcher-menu";
 import { Button } from "~shared/design-system/button";
+import { Section } from "~shared/design-system/section";
 import { Heading } from "~shared/design-system/typography/heading";
+import { Link } from "~shared/design-system/typography/link";
 import { css, cx } from "~styled-system/css";
-import { container } from "~styled-system/patterns";
+import { container, stack } from "~styled-system/patterns";
 
 export const Route = createFileRoute("/packages/kickass-ui/documentation")({
     component: RouteComponent,
@@ -39,6 +41,9 @@ function DocumentationNavigationSidebar() {
                 flexShrink: "0",
                 display: "flex",
                 flexDirection: "column",
+                position: "sticky",
+                top: "16",
+                left: "0",
             })}
         >
             <header
@@ -98,6 +103,7 @@ function DocumentationNavigationSidebar() {
                     >
                         <li className={css({ position: "relative" })}>
                             <Button
+                                asChild
                                 fullWidth
                                 highContrast
                                 size="sm"
@@ -105,7 +111,14 @@ function DocumentationNavigationSidebar() {
                                 justify="start"
                                 css={{ colorPalette: "neutral" }}
                             >
-                                Introduction
+                                <RouterLink
+                                    to="/packages/kickass-ui/documentation"
+                                    activeProps={{
+                                        "data-active": "",
+                                    }}
+                                >
+                                    Introduction
+                                </RouterLink>
                             </Button>
                         </li>
                         <li className={css({ position: "relative" })}>
@@ -436,5 +449,48 @@ function DocumentationNavigationSidebar() {
 }
 
 function TOCNavigationSidebar() {
-    return <aside className={css({ width: "64" })}>TOC</aside>;
+    return (
+        <aside
+            className={css({
+                height: "calc({sizes.viewportHeight} - {sizes.16})",
+                width: "64",
+                flexShrink: "0",
+                position: "sticky",
+                top: "16",
+                left: "0",
+            })}
+        >
+            <Section size="lg">
+                <header>
+                    <Heading size="lg" as="h2">
+                        On this page
+                    </Heading>
+                </header>
+                <nav className={css({ paddingY: "4" })}>
+                    <ul className={stack()}>
+                        <li>
+                            <Link size="sm" css={{ colorPalette: "neutral" }}>
+                                Motivation
+                            </Link>
+                        </li>
+                        <li>
+                            <Link size="sm" css={{ colorPalette: "neutral" }}>
+                                Solution
+                            </Link>
+                        </li>
+                        <li>
+                            <Link size="sm" css={{ colorPalette: "neutral" }}>
+                                Acknowledgments
+                            </Link>
+                        </li>
+                        <li>
+                            <Link size="sm" css={{ colorPalette: "neutral" }}>
+                                FAQ
+                            </Link>
+                        </li>
+                    </ul>
+                </nav>
+            </Section>
+        </aside>
+    );
 }
