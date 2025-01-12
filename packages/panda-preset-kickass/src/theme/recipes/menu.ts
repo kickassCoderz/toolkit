@@ -8,10 +8,12 @@ export const menu = defineSlotRecipe({
     base: {
         positioner: {},
         content: {
-            backgroundColor: "panel",
+            backgroundColor: "panel.translucent",
             boxShadow: "5",
             border: "default",
             outline: "none",
+            backdropFilter: "auto",
+            backdropBlur: "3xl",
         },
         item: {
             display: "flex",

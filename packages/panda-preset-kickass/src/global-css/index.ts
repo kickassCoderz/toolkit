@@ -8,6 +8,20 @@ export const globalCss = defineGlobalStyles({
         "--global-font-body": "{fonts.body}",
         "--global-font-mono": "{fonts.mono}",
         "--global-color-border": "{colors.neutral.a6}",
+
+        scrollbarWidth: "thin",
+        scrollbarColor: "{colors.neutral.a8} {colors.neutral.a3}",
+
+        _scrollbar: {
+            width: "1.5",
+        },
+        _scrollbarTrack: {
+            background: "neutral.a3",
+        },
+        _scrollbarThumb: {
+            background: "neutral.a8",
+            borderRadius: "md",
+        },
     },
     body: {
         overscrollBehavior: "none",

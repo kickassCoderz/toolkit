@@ -4,6 +4,7 @@ import { button } from "./button";
 import { callout } from "./callout";
 import { card } from "./card";
 import { dataList } from "./data-list";
+import { drawer } from "./drawer";
 import { fieldset } from "./fieldset";
 import { icon } from "./icon";
 import { iconButton } from "./icon-button";
@@ -14,6 +15,7 @@ import { radioGroup } from "./radio-group";
 import { section } from "./section";
 import { segmentGroup } from "./segment-group";
 import { select } from "./select";
+import { sidebar } from "./sidebar";
 import { skeleton } from "./skeleton";
 import { spinner } from "./spinner";
 import { switchRecipe } from "./switch";
@@ -53,4 +55,6 @@ export const slotRecipes = {
     table,
     spinner,
     menu,
+    sidebar,
+    drawer,
 };

@@ -5,6 +5,8 @@ import { blurs } from "./blurs";
 import { borderWidths } from "./border-widths";
 import { borders } from "./borders";
 import { colors } from "./colors";
+import { durations } from "./durations";
+import { easings } from "./easings";
 import { radii } from "./radii";
 import { sizes } from "./sizes";
 import { spacing } from "./spacing";
@@ -26,4 +28,6 @@ export const tokens = defineTokens({
     borderWidths,
     animations,
     borders,
+    easings,
+    durations,
 });

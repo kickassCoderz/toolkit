@@ -53,10 +53,12 @@ export const select = defineSlotRecipe({
         positioner: {},
         content: {
             overflow: "hidden",
-            backgroundColor: "panel",
             boxShadow: "5",
             border: "default",
             outline: "none",
+            backgroundColor: "panel.translucent",
+            backdropFilter: "auto",
+            backdropBlur: "3xl",
         },
         itemGroup: {},
         itemGroupLabel: {

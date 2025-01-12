@@ -34,6 +34,7 @@ export const button = defineRecipe({
         whiteSpace: "nowrap",
         transition: "common",
         transitionDuration: "moderate",
+        height: "fit",
 
         "&:where(a)": {
             cursor: "pointer",

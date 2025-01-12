@@ -1,26 +1,41 @@
 import { createFileRoute, Link as RouterLink, Outlet } from "@tanstack/react-router";
+import { EllipsisIcon, PanelLeftCloseIcon, SearchIcon, SparklesIcon } from "lucide-react";
 
 import { PackageSwitcherMenu } from "~features/packages/ui/package-switcher-menu";
+import { Logo } from "~shared/components/logo";
 import { Button } from "~shared/design-system/button";
+import { Icon } from "~shared/design-system/icon";
+import { IconButton } from "~shared/design-system/icon-button";
 import { Section } from "~shared/design-system/section";
+import { Switch } from "~shared/design-system/switch";
+import { TextInput } from "~shared/design-system/text-input";
 import { Heading } from "~shared/design-system/typography/heading";
 import { Link } from "~shared/design-system/typography/link";
 import { css, cx } from "~styled-system/css";
+import { HStack, Stack } from "~styled-system/jsx";
 import { container, stack } from "~styled-system/patterns";
 
 export const Route = createFileRoute("/packages/kickass-ui/documentation")({
     component: RouteComponent,
 });
 
-const rootStyles = cx(
-    container({
-        width: "full",
-        position: "relative",
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-    })
-);
+// const rootStyles = cx(
+//     container({
+//         width: "full",
+//         position: "relative",
+//         display: "flex",
+//         flexDirection: "row",
+//         justifyContent: "space-between",
+//     })
+// );
+
+const rootStyles = css({
+    width: "full",
+    position: "relative",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+});
 
 function RouteComponent() {
     return (
@@ -37,13 +52,27 @@ function DocumentationNavigationSidebar() {
         <aside
             className={css({
                 width: "64",
-                height: "calc({sizes.viewportHeight} - {sizes.16})",
+                height: "viewportHeight", //"calc({sizes.viewportHeight} - {sizes.16})",
                 flexShrink: "0",
                 display: "flex",
                 flexDirection: "column",
                 position: "sticky",
-                top: "16",
+                top: "0", //"16",
                 left: "0",
+
+                borderImageSource:
+                    "linear-gradient(0deg, {colors.background.translucent} 0, {colors.neutral.a6} 55%, {colors.background.translucent})",
+                // borderImageSource:
+                //     "linear-gradient(90deg, hsla(0, 0%, 100%, 0) 0, hsla(0, 0%, 100%, .2) 55%, hsla(0, 0%, 100%, 0))",
+                borderRightWidth: "1px",
+                borderRightStyle: "solid",
+                borderImageSlice: "1",
+
+                bgGradient:
+                    "linear-gradient(to bottom, {colors.background.translucent}, {colors.neutral.a2}, {colors.background.translucent})",
+
+                // gradientTo: "transparent",
+                // gradientTo: "background.translucent",
             })}
         >
             <header
@@ -56,7 +85,55 @@ function DocumentationNavigationSidebar() {
                     gap: "2",
                 })}
             >
+                <HStack justify="space-between" css={{ paddingTop: "1", paddingLeft: "1" }}>
+                    <Logo interactive size="sm" />
+                    <IconButton size="sm" variant="ghost" css={{ colorPalette: "neutral" }}>
+                        <Icon>
+                            <EllipsisIcon />
+                        </Icon>
+                    </IconButton>
+                </HStack>
                 <PackageSwitcherMenu />
+                <ul
+                    className={css({
+                        width: "full",
+                        minWidth: "0",
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "1",
+                    })}
+                >
+                    <li className={css({ position: "relative" })}>
+                        <Button
+                            fullWidth
+                            highContrast
+                            size="sm"
+                            variant="ghost"
+                            justify="start"
+                            css={{ colorPalette: "neutral" }}
+                        >
+                            <Icon>
+                                <SearchIcon />
+                            </Icon>
+                            Search...
+                        </Button>
+                    </li>
+                    <li className={css({ position: "relative" })}>
+                        <Button
+                            fullWidth
+                            highContrast
+                            size="sm"
+                            variant="ghost"
+                            justify="start"
+                            css={{ colorPalette: "neutral" }}
+                        >
+                            <Icon>
+                                <SparklesIcon />
+                            </Icon>
+                            Ask AI
+                        </Button>
+                    </li>
+                </ul>
             </header>
             <div
                 className={css({
@@ -432,7 +509,7 @@ function DocumentationNavigationSidebar() {
                     </ul>
                 </section>
             </div>
-            {/* <footer
+            <footer
                 className={css({
                     padding: "2",
                     width: "full",
@@ -440,10 +517,22 @@ function DocumentationNavigationSidebar() {
                     display: "flex",
                     flexDirection: "column",
                     gap: "2",
+                    borderImageSource:
+                        "linear-gradient(90deg, {colors.background.translucent} 0, {colors.neutral.a6} 55%, {colors.background.translucent})",
+                    borderTopWidth: "1px",
+                    borderTopStyle: "solid",
+                    borderImageSlice: "1",
                 })}
             >
-                
-            </footer> */}
+                <HStack justify="space-between">
+                    <Switch size="sm" />
+                    <IconButton size="sm" variant="ghost" css={{ colorPalette: "neutral" }}>
+                        <Icon>
+                            <PanelLeftCloseIcon />
+                        </Icon>
+                    </IconButton>
+                </HStack>
+            </footer>
         </aside>
     );
 }

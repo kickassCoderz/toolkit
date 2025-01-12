@@ -1,3 +1,5 @@
+import { useMatchRoute } from "@tanstack/react-router";
+
 import { css } from "~styled-system/css";
 
 import { GlobalFooter } from "./global-footer";
@@ -13,9 +15,13 @@ type GlobalLayoutProperties = Readonly<{
 }>;
 
 export function GlobalLayout({ children }: GlobalLayoutProperties) {
+    const match = useMatchRoute();
+
+    const matches = match({ to: "/packages/kickass-ui/documentation" });
+
     return (
         <div className={rootStyles}>
-            <GlobalHeader />
+            {!matches && <GlobalHeader />}
             {children}
             <GlobalFooter />
         </div>

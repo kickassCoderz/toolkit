@@ -14,6 +14,7 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
 import { Route as ShowcaseIndexImport } from './routes/showcase/index'
 import { Route as PackagesIndexImport } from './routes/packages/index'
+import { Route as BlogIndexImport } from './routes/blog/index'
 import { Route as PackagesKickassUiIndexImport } from './routes/packages/kickass-ui/index'
 import { Route as PackagesKickassUiDocumentationRouteImport } from './routes/packages/kickass-ui/documentation/route'
 import { Route as PackagesKickassUiPlaygroundIndexImport } from './routes/packages/kickass-ui/playground/index'
@@ -36,6 +37,12 @@ const ShowcaseIndexRoute = ShowcaseIndexImport.update({
 const PackagesIndexRoute = PackagesIndexImport.update({
   id: '/packages/',
   path: '/packages/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const BlogIndexRoute = BlogIndexImport.update({
+  id: '/blog/',
+  path: '/blog/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -75,6 +82,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogIndexImport
       parentRoute: typeof rootRoute
     }
     '/packages/': {
@@ -141,6 +155,7 @@ const PackagesKickassUiDocumentationRouteRouteWithChildren =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/blog': typeof BlogIndexRoute
   '/packages': typeof PackagesIndexRoute
   '/showcase': typeof ShowcaseIndexRoute
   '/packages/kickass-ui/documentation': typeof PackagesKickassUiDocumentationRouteRouteWithChildren
@@ -151,6 +166,7 @@ export interface FileRoutesByFullPath {
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/blog': typeof BlogIndexRoute
   '/packages': typeof PackagesIndexRoute
   '/showcase': typeof ShowcaseIndexRoute
   '/packages/kickass-ui': typeof PackagesKickassUiIndexRoute
@@ -161,6 +177,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/blog/': typeof BlogIndexRoute
   '/packages/': typeof PackagesIndexRoute
   '/showcase/': typeof ShowcaseIndexRoute
   '/packages/kickass-ui/documentation': typeof PackagesKickassUiDocumentationRouteRouteWithChildren
@@ -173,6 +190,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/blog'
     | '/packages'
     | '/showcase'
     | '/packages/kickass-ui/documentation'
@@ -182,6 +200,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/blog'
     | '/packages'
     | '/showcase'
     | '/packages/kickass-ui'
@@ -190,6 +209,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/blog/'
     | '/packages/'
     | '/showcase/'
     | '/packages/kickass-ui/documentation'
@@ -201,6 +221,7 @@ export interface FileRouteTypes {
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   PackagesIndexRoute: typeof PackagesIndexRoute
   ShowcaseIndexRoute: typeof ShowcaseIndexRoute
   PackagesKickassUiDocumentationRouteRoute: typeof PackagesKickassUiDocumentationRouteRouteWithChildren
@@ -210,6 +231,7 @@ export interface RootRouteChildren {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BlogIndexRoute: BlogIndexRoute,
   PackagesIndexRoute: PackagesIndexRoute,
   ShowcaseIndexRoute: ShowcaseIndexRoute,
   PackagesKickassUiDocumentationRouteRoute:
@@ -229,6 +251,7 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/blog/",
         "/packages/",
         "/showcase/",
         "/packages/kickass-ui/documentation",
@@ -238,6 +261,9 @@ export const routeTree = rootRoute
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/blog/": {
+      "filePath": "blog/index.tsx"
     },
     "/packages/": {
       "filePath": "packages/index.tsx"

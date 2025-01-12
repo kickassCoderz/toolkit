@@ -56,6 +56,21 @@ const logoRecipe = sva({
             },
         },
         size: {
+            sm: {
+                root: {
+                    gap: "2",
+                    transition: "mask-position 1s ease",
+                },
+                icon: {
+                    width: "7",
+                    height: "7",
+                    borderRadius: "md",
+                    fontSize: "md",
+                },
+                text: {
+                    textStyle: "md",
+                },
+            },
             md: {
                 root: {
                     gap: "2",

@@ -118,6 +118,29 @@ export function GlobalHeader() {
                                     </RouterLink>
                                 </Link>
                             </li>
+                            <li className={classes.navListItem}>
+                                <Link
+                                    asChild
+                                    size="sm"
+                                    css={{
+                                        colorPalette: {
+                                            base: "neutral",
+                                            _active: "accent",
+                                        },
+                                    }}
+                                    highContrast={{ base: true, _active: false }}
+                                    weight="medium"
+                                >
+                                    <RouterLink
+                                        to="/blog"
+                                        activeProps={{
+                                            "data-active": "",
+                                        }}
+                                    >
+                                        Blog
+                                    </RouterLink>
+                                </Link>
+                            </li>
                         </ul>
                     </nav>
                     <IconButton
