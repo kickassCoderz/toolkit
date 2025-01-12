@@ -168,9 +168,8 @@ function RouteComponent() {
                 defaultOpen
                 modal={false}
                 preventScroll={false}
-                placement="left"
-                size="xs"
-                showBackdrop={false}
+                placement="right"
+                size="2xs"
                 trigger={<Button>Open</Button>}
             >
                 <DrawerHeader>

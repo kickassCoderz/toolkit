@@ -25,25 +25,21 @@ export const drawer = defineSlotRecipe({
             },
         },
         positioner: {
-            width: "viewportWidth",
+            width: "fit",
             height: "viewportHeight",
             flexShrink: "0",
             position: "fixed",
             top: "0",
-            left: "0",
             overscrollBehaviorY: "none",
-            display: "flex",
         },
         content: {
             width: "full",
             height: "full",
             display: "flex",
             flexDirection: "column",
-            borderRight: "default",
             boxShadow: "6",
             position: "relative",
             overflow: "hidden",
-            borderRadius: "md",
 
             _open: {
                 animationDuration: "slowest",
@@ -85,6 +81,17 @@ export const drawer = defineSlotRecipe({
         closeTrigger: {},
     },
     variants: {
+        floating: {
+            true: {
+                positioner: {
+                    padding: "2",
+                },
+                content: {
+                    borderRadius: "md",
+                    border: "default",
+                },
+            },
+        },
         translucent: {
             true: {
                 content: {
@@ -102,46 +109,47 @@ export const drawer = defineSlotRecipe({
         size: {
             "2xs": {
                 content: {
-                    maxW: "64",
+                    width: "64",
                 },
             },
             xs: {
                 content: {
-                    maxW: "xs",
+                    width: "xs",
                 },
             },
             sm: {
                 content: {
-                    maxW: "md",
+                    width: "md",
                 },
             },
             md: {
                 content: {
-                    maxW: "lg",
+                    width: "lg",
                 },
             },
             lg: {
                 content: {
-                    maxW: "2xl",
+                    width: "2xl",
                 },
             },
             xl: {
                 content: {
-                    maxW: "4xl",
+                    width: "4xl",
                 },
             },
             full: {
                 content: {
-                    maxW: "100vw",
+                    width: "100vw",
                 },
             },
         },
         placement: {
             left: {
                 positioner: {
-                    justifyContent: "flex-start",
+                    left: "0",
                 },
                 content: {
+                    borderRight: "default",
                     _open: {
                         animationName: {
                             base: "slide-from-left-full, fade-in",
@@ -158,9 +166,10 @@ export const drawer = defineSlotRecipe({
             },
             right: {
                 positioner: {
-                    justifyContent: "flex-end",
+                    right: "0",
                 },
                 content: {
+                    borderLeft: "default",
                     _open: {
                         animationName: {
                             base: "slide-from-right-full, fade-in",
@@ -180,6 +189,6 @@ export const drawer = defineSlotRecipe({
     defaultVariants: {
         size: "xs",
         placement: "left",
-        translucent: true,
+        translucent: false,
     },
 });
