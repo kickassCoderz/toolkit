@@ -164,25 +164,6 @@ function RouteComponent() {
                 </Sidebar>
             </SidebarProvider> */}
 
-            <Drawer
-                defaultOpen
-                modal={false}
-                preventScroll={false}
-                placement="right"
-                size="2xs"
-                trigger={<Button>Open</Button>}
-            >
-                <DrawerHeader>
-                    Header
-                    <DrawerCloseTrigger asChild>
-                        <IconButton variant="ghost" size="sm">
-                            C
-                        </IconButton>
-                    </DrawerCloseTrigger>
-                </DrawerHeader>
-                <DrawerBody>Body</DrawerBody>
-                <DrawerFooter>Footer</DrawerFooter>
-            </Drawer>
             <Outlet />
         </div>
     );

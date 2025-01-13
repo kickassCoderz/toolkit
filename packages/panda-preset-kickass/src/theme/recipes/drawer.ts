@@ -3,6 +3,8 @@ import { defineSlotRecipe } from "@pandacss/dev";
 
 const drawerAnatomy = dialogAnatomy.extendWith("body", "header", "footer");
 
+const drawerSizeVariable = "--drawer-size";
+
 export const drawer = defineSlotRecipe({
     className: "drawer",
     slots: drawerAnatomy.keys(),
@@ -25,11 +27,8 @@ export const drawer = defineSlotRecipe({
             },
         },
         positioner: {
-            width: "fit",
-            height: "viewportHeight",
             flexShrink: "0",
             position: "fixed",
-            top: "0",
             overscrollBehaviorY: "none",
         },
         content: {
@@ -87,7 +86,7 @@ export const drawer = defineSlotRecipe({
                     padding: "2",
                 },
                 content: {
-                    borderRadius: "md",
+                    borderRadius: "lg",
                     border: "default",
                 },
             },
@@ -108,36 +107,39 @@ export const drawer = defineSlotRecipe({
         },
         size: {
             "2xs": {
-                content: {
-                    width: "64",
+                positioner: {
+                    [drawerSizeVariable]: "{sizes.64}",
                 },
             },
             xs: {
-                content: {
-                    width: "xs",
+                positioner: {
+                    [drawerSizeVariable]: "{sizes.xs}",
                 },
             },
             sm: {
-                content: {
-                    width: "md",
+                positioner: {
+                    [drawerSizeVariable]: "{sizes.md}",
                 },
             },
             md: {
-                content: {
-                    width: "lg",
+                positioner: {
+                    [drawerSizeVariable]: "{sizes.lg}",
                 },
             },
             lg: {
-                content: {
-                    width: "2xl",
+                positioner: {
+                    [drawerSizeVariable]: "{sizes.2xl}",
                 },
             },
             xl: {
-                content: {
-                    width: "4xl",
+                positioner: {
+                    [drawerSizeVariable]: "{sizes.4xl}",
                 },
             },
             full: {
+                positioner: {
+                    [drawerSizeVariable]: "{sizes.64}",
+                },
                 content: {
                     width: "100vw",
                 },
@@ -146,7 +148,10 @@ export const drawer = defineSlotRecipe({
         placement: {
             left: {
                 positioner: {
+                    top: "0",
                     left: "0",
+                    width: `var(${drawerSizeVariable})`,
+                    height: "viewportHeight",
                 },
                 content: {
                     borderRight: "default",
@@ -166,7 +171,10 @@ export const drawer = defineSlotRecipe({
             },
             right: {
                 positioner: {
+                    top: "0",
                     right: "0",
+                    width: `var(${drawerSizeVariable})`,
+                    height: "viewportHeight",
                 },
                 content: {
                     borderLeft: "default",
@@ -182,6 +190,32 @@ export const drawer = defineSlotRecipe({
                             _rtl: "slide-to-right-full, fade-out",
                         },
                     },
+                },
+            },
+            top: {
+                positioner: {
+                    top: "0",
+                    right: "0",
+                    height: `var(${drawerSizeVariable})`,
+                    width: "viewportWidth",
+                },
+                content: {
+                    borderBottom: "default",
+                    _open: { animationName: "slide-from-top-full, fade-in" },
+                    _closed: { animationName: "slide-to-top-full, fade-out" },
+                },
+            },
+            bottom: {
+                positioner: {
+                    bottom: "0",
+                    left: "0",
+                    height: `var(${drawerSizeVariable})`,
+                    width: "viewportWidth",
+                },
+                content: {
+                    borderTop: "default",
+                    _open: { animationName: "slide-from-bottom-full, fade-in" },
+                    _closed: { animationName: "slide-to-bottom-full, fade-out" },
                 },
             },
         },
