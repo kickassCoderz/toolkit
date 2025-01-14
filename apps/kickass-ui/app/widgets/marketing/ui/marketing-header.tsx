@@ -31,8 +31,6 @@ const headerRecipe = sva({
             justifyContent: "space-between",
             borderImageSource:
                 "linear-gradient(90deg, {colors.background.translucent} 0, {colors.neutral.a6} 55%, {colors.background.translucent})",
-            // borderImageSource:
-            //     "linear-gradient(90deg, hsla(0, 0%, 100%, 0) 0, hsla(0, 0%, 100%, .2) 55%, hsla(0, 0%, 100%, 0))",
             borderBottomWidth: "1px",
             borderBottomStyle: "solid",
             borderImageSlice: "1",

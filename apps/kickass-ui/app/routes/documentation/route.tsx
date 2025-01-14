@@ -1,17 +1,31 @@
 import { createFileRoute, Outlet } from "@tanstack/react-router";
 
-import { css } from "~styled-system/css";
+import { hstack, stack } from "~styled-system/patterns";
 import { DocumentationHeader } from "~widgets/docs/navigation/ui/documentation-header";
 
 export const Route = createFileRoute("/documentation")({
     component: RouteComponent,
 });
 
+const rootStyles = stack({
+    direction: {
+        base: "column",
+        lg: "row",
+    },
+    gap: "0",
+});
+
+const mainStyles = hstack({
+    width: "full",
+});
+
 function RouteComponent() {
     return (
-        <div className={css({ display: "flex", flexDirection: "row" })}>
+        <div className={rootStyles}>
             <DocumentationHeader />
-            <Outlet />
+            <main className={mainStyles}>
+                <Outlet />
+            </main>
         </div>
     );
 }
