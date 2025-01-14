@@ -20,7 +20,7 @@ export function DocumentationMenu() {
         >
             <button>
                 <HStack gap="inherit" css={{ overflow: "hidden" }}>
-                    <Avatar size="sm" radius="rounded" initials="SF" />
+                    <Avatar size="sm" radius="rounded" name="Kickass UI" initials="UI" />
                     <Stack gap="0" css={{ overflow: "hidden" }}>
                         <Text
                             as="span"
