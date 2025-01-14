@@ -73,6 +73,8 @@ export const drawer = defineSlotRecipe({
             flexDirection: "column",
             overflowY: "auto",
             position: "relative",
+            padding: "2",
+            gap: "4",
         },
         title: {},
         description: {},

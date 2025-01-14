@@ -15,6 +15,7 @@ export const card = defineSlotRecipe({
             borderRadius: `var(${radiusVariable})`,
             display: "flex",
             flexDirection: "column",
+            color: "neutral.12",
 
             _before: {
                 content: '""',

@@ -1,15 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PanelLeftOpenIcon } from "lucide-react";
 
-import { Button } from "~shared/design-system/button";
-import { Icon } from "~shared/design-system/icon";
-import { IconButton } from "~shared/design-system/icon-button";
 import { Heading } from "~shared/design-system/typography/heading";
 import { Link } from "~shared/design-system/typography/link";
 import { Text } from "~shared/design-system/typography/text";
 import { css } from "~styled-system/css";
 import { Box, HStack, Stack } from "~styled-system/jsx";
 import { container, stack } from "~styled-system/patterns";
+import { MobileNavigationDrawer } from "~widgets/docs/navigation/ui/mobile-navigation-drawer";
 
 export const Route = createFileRoute("/documentation/")({
     component: RouteComponent,
@@ -35,6 +32,7 @@ function RouteComponent() {
                 })}
             >
                 <header className={headerStyles}>
+                    <MobileNavigationDrawer />
                     <hgroup className={headerHgroupStyles}>
                         <Heading size="4xl">Kickass UI</Heading>
                         <Text highContrast={false} size="lg">
@@ -159,7 +157,7 @@ function RouteComponent() {
                     </Stack>
                 </section>
             </article>
-            <TOCNavigationSidebar />
+            {/* <TOCNavigationSidebar /> */}
         </main>
     );
 }
