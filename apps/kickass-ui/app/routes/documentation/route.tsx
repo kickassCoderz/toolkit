@@ -1,6 +1,6 @@
 import { createFileRoute, Outlet } from "@tanstack/react-router";
 
-import { hstack, stack } from "~styled-system/patterns";
+import { stack } from "~styled-system/patterns";
 import { DocumentationHeader } from "~widgets/docs/navigation/ui/documentation-header";
 
 export const Route = createFileRoute("/documentation")({
@@ -15,8 +15,13 @@ const rootStyles = stack({
     gap: "0",
 });
 
-const mainStyles = hstack({
+const mainStyles = stack({
     width: "full",
+
+    direction: {
+        base: "column-reverse",
+        xl: "row",
+    },
 });
 
 function RouteComponent() {
