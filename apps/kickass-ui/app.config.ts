@@ -14,6 +14,7 @@ export default defineConfig({
                 "~features": path.resolve("app/features"),
                 "~widgets": path.resolve("app/widgets"),
                 "~styled-system": path.resolve("styled-system"),
+                "~site-content": path.resolve("./.velite"),
             },
         },
     },

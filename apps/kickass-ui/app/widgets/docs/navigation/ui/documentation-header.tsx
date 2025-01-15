@@ -1,4 +1,16 @@
+import { MenuIcon, XIcon } from "lucide-react";
+
+import type { SidebarDocumentationNaviagationData } from "~entities/documentation/utils/create-documentation-naviagtion-data";
 import { Logo } from "~shared/components/logo";
+import {
+    Drawer,
+    DrawerBody,
+    DrawerCloseTrigger,
+    DrawerFooter,
+    DrawerHeader,
+} from "~shared/design-system/drawer";
+import { Icon } from "~shared/design-system/icon";
+import { IconButton } from "~shared/design-system/icon-button";
 import { css } from "~styled-system/css";
 import { HStack } from "~styled-system/jsx";
 import { container } from "~styled-system/patterns";
@@ -6,7 +18,6 @@ import { container } from "~styled-system/patterns";
 import { DocumentationNavigation } from "./documentation-navigation";
 import { DocumentationNavigationFooterContent } from "./documentation-navigation-footer-content";
 import { DocumentationNavigationHeaderContent } from "./documentation-navigation-header-content";
-import { MobileNavigationDrawer } from "./mobile-navigation-drawer";
 
 const rootStyles = css({
     width: {
@@ -39,15 +50,6 @@ const rootStyles = css({
     },
 });
 
-export function DocumentationHeader() {
-    return (
-        <header className={rootStyles}>
-            <MobileContent />
-            <DesktopContent />
-        </header>
-    );
-}
-
 const mobileContentRootStyles = container({
     hideFrom: "lg",
     width: "full",
@@ -56,17 +58,6 @@ const mobileContentRootStyles = container({
     alignItems: "center",
     justifyContent: "space-between",
 });
-
-function MobileContent() {
-    return (
-        <div className={mobileContentRootStyles}>
-            <Logo />
-            <HStack>
-                <MobileNavigationDrawer />
-            </HStack>
-        </div>
-    );
-}
 
 const desktopContentRootStyles = css({
     width: "full",
@@ -100,18 +91,70 @@ const desktopFooterAndHeaderStyles = css({
     gap: "2",
 });
 
-function DesktopContent() {
+type DocumentationHeaderProperties = Readonly<{
+    navigationData: SidebarDocumentationNaviagationData;
+}>;
+
+export function DocumentationHeader({ navigationData }: DocumentationHeaderProperties) {
     return (
-        <div className={desktopContentRootStyles}>
-            <div className={desktopFooterAndHeaderStyles}>
-                <DocumentationNavigationHeaderContent />
+        <header className={rootStyles}>
+            <div className={mobileContentRootStyles}>
+                <Logo />
+                <HStack>
+                    <Drawer
+                        size="xs"
+                        placement="left"
+                        trigger={
+                            <IconButton
+                                highContrast
+                                size="sm"
+                                variant="ghost"
+                                css={{ colorPalette: "neutral" }}
+                            >
+                                <Icon>
+                                    <MenuIcon />
+                                </Icon>
+                            </IconButton>
+                        }
+                    >
+                        <DrawerHeader>
+                            <DocumentationNavigationHeaderContent
+                                action={
+                                    <DrawerCloseTrigger asChild>
+                                        <IconButton
+                                            highContrast
+                                            size="sm"
+                                            variant="ghost"
+                                            css={{ colorPalette: "neutral", marginRight: "-2" }}
+                                        >
+                                            <Icon>
+                                                <XIcon />
+                                            </Icon>
+                                        </IconButton>
+                                    </DrawerCloseTrigger>
+                                }
+                            />
+                        </DrawerHeader>
+                        <DrawerBody>
+                            <DocumentationNavigation navigationData={navigationData} />
+                        </DrawerBody>
+                        <DrawerFooter>
+                            <DocumentationNavigationFooterContent />
+                        </DrawerFooter>
+                    </Drawer>
+                </HStack>
             </div>
-            <div className={desktopBodyStyles}>
-                <DocumentationNavigation />
+            <div className={desktopContentRootStyles}>
+                <div className={desktopFooterAndHeaderStyles}>
+                    <DocumentationNavigationHeaderContent />
+                </div>
+                <div className={desktopBodyStyles}>
+                    <DocumentationNavigation navigationData={navigationData} />
+                </div>
+                <div className={desktopFooterAndHeaderStyles}>
+                    <DocumentationNavigationFooterContent />
+                </div>
             </div>
-            <div className={desktopFooterAndHeaderStyles}>
-                <DocumentationNavigationFooterContent />
-            </div>
-        </div>
+        </header>
     );
 }

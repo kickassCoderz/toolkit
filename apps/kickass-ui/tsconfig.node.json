@@ -7,5 +7,5 @@
         "lib": ["ESNext"],
         "noEmit": true
     },
-    "include": ["app.config.ts", "panda.config.ts"]
+    "include": ["app.config.ts", "panda.config.ts", "velite.config.ts"]
 }

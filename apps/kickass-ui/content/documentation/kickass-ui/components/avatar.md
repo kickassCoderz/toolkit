@@ -1,0 +1,6 @@
+---
+title: Avatar
+description: Profile picture, user initials or fallback icon.
+---
+
+## API Reference

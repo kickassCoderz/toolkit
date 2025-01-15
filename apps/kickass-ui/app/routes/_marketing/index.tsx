@@ -65,7 +65,12 @@ function RouteComponent() {
                 </hgroup>
                 <Stack direction={["column", "row"]} gap="4">
                     <Button asChild fullWidth={[true, false]} size="lg" variant="solid">
-                        <RouterLink to="/documentation">
+                        <RouterLink
+                            to="/documentation/$"
+                            params={{
+                                _splat: "kickass-ui/overview/introduction",
+                            }}
+                        >
                             Get Started
                             <Icon>
                                 <ArrowRightIcon />

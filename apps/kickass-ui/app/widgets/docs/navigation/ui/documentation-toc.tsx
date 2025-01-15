@@ -1,3 +1,5 @@
+import { For } from "@kickass-coderz/react-control-flow/for";
+import { Link as RouterLink } from "@tanstack/react-router";
 import { ChevronRightIcon, TextIcon } from "lucide-react";
 
 import { Button } from "~shared/design-system/button";
@@ -8,7 +10,60 @@ import { Text } from "~shared/design-system/typography/text";
 import { css } from "~styled-system/css";
 import { container, hstack, stack } from "~styled-system/patterns";
 
-export function DocumentationToc() {
+type TocEntries = Array<{
+    title: string;
+    url: string;
+    depth: number;
+}>;
+
+type DocumentationTocProperties = Readonly<{
+    entries: TocEntries;
+}>;
+
+const mobileContentRootStyles = container({
+    hideFrom: "xl",
+    width: "full",
+    height: "full",
+    display: "flex",
+    alignItems: "center",
+});
+
+const mobileContentHeadingStyles = hstack({
+    gap: "0",
+});
+
+const desktopContentRootStyles = css({
+    hideBelow: "xl",
+    paddingY: "12",
+});
+
+const desktopEntryItemStyles = css({
+    height: "fit",
+    width: "fit",
+    "&:where([data-depth='0'])": {
+        paddingLeft: "0",
+    },
+    "&:where([data-depth='1'])": {
+        paddingLeft: "4",
+    },
+    "&:where([data-depth='2'])": {
+        paddingLeft: "8",
+    },
+    "&:where([data-depth='3'])": {
+        paddingLeft: "12",
+    },
+    "&:where([data-depth='4'])": {
+        paddingLeft: "16",
+    },
+    "&:where([data-depth='5'])": {
+        paddingLeft: "20",
+    },
+    "&:where([data-depth='6'])": {
+        paddingLeft: "24",
+    },
+});
+
+export function DocumentationToc({ entries }: DocumentationTocProperties) {
     return (
         <aside
             className={css({
@@ -39,88 +94,79 @@ export function DocumentationToc() {
                 },
             })}
         >
-            <MobileContent />
-            <DesktopContent />
-        </aside>
-    );
-}
-
-const mobileContentRootStyles = container({
-    hideFrom: "xl",
-    width: "full",
-    height: "full",
-    display: "flex",
-    alignItems: "center",
-});
-
-const mobileContentHeadingStyles = hstack({
-    gap: "0",
-});
-
-function MobileContent() {
-    return (
-        <div className={mobileContentRootStyles}>
-            <h1 className={mobileContentHeadingStyles}>
-                <Button highContrast size="xs" variant="ghost" css={{ colorPalette: "neutral" }}>
+            <div className={mobileContentRootStyles}>
+                <h1 className={mobileContentHeadingStyles}>
+                    <Button
+                        highContrast
+                        size="xs"
+                        variant="ghost"
+                        css={{ colorPalette: "neutral" }}
+                    >
+                        <Icon>
+                            <TextIcon />
+                        </Icon>
+                        On this page
+                    </Button>
                     <Icon>
-                        <TextIcon />
+                        <ChevronRightIcon />
                     </Icon>
-                    On this page
-                </Button>
-                <Icon>
-                    <ChevronRightIcon />
-                </Icon>
-                <Text
-                    as="span"
-                    highContrast={false}
-                    weight="medium"
-                    size="xs"
-                    css={{ paddingLeft: "2" }}
-                >
-                    Motivation
-                </Text>
-            </h1>
-        </div>
-    );
-}
-
-const desktopContentRootStyles = css({
-    hideBelow: "xl",
-    paddingY: "12",
-});
-
-function DesktopContent() {
-    return (
-        <div className={desktopContentRootStyles}>
-            <header>
-                <Heading size="lg" as="h2">
-                    On this page
-                </Heading>
-            </header>
-            <nav className={css({ paddingY: "4" })}>
-                <ul className={stack()}>
-                    <li>
-                        <Link size="sm" css={{ colorPalette: "neutral" }}>
-                            Motivation
-                        </Link>
-                    </li>
-                    <li>
-                        <Link size="sm" css={{ colorPalette: "neutral" }}>
-                            Solution
-                        </Link>
-                    </li>
-                    <li>
-                        <Link size="sm" css={{ colorPalette: "neutral" }}>
-                            Acknowledgments
-                        </Link>
-                    </li>
-                    <li>
-                        <Link size="sm" css={{ colorPalette: "neutral" }}>
-                            FAQ
-                        </Link>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+                    <Text
+                        as="span"
+                        highContrast={false}
+                        weight="medium"
+                        size="xs"
+                        css={{ paddingLeft: "2" }}
+                    >
+                        Motivation
+                    </Text>
+                </h1>
+            </div>
+            <div className={desktopContentRootStyles}>
+                <header>
+                    <Heading size="lg" as="h2">
+                        On this page
+                    </Heading>
+                </header>
+                <nav className={css({ paddingY: "4" })}>
+                    <ul className={stack()}>
+                        <For each={entries}>
+                            {(entryItem) => (
+                                <li
+                                    key={entryItem.title}
+                                    data-depth={entryItem.depth}
+                                    className={desktopEntryItemStyles}
+                                >
+                                    <Link asChild size="sm" css={{ colorPalette: "neutral" }}>
+                                        <RouterLink to="." hash={entryItem.url}>
+                                            {entryItem.title}
+                                        </RouterLink>
+                                    </Link>
+                                </li>
+                            )}
+                        </For>
+                        {/* <li>
+                            <Link size="sm" css={{ colorPalette: "neutral" }}>
+                                Motivation
+                            </Link>
+                        </li>
+                        <li>
+                            <Link size="sm" css={{ colorPalette: "neutral" }}>
+                                Solution
+                            </Link>
+                        </li>
+                        <li>
+                            <Link size="sm" css={{ colorPalette: "neutral" }}>
+                                Acknowledgments
+                            </Link>
+                        </li>
+                        <li>
+                            <Link size="sm" css={{ colorPalette: "neutral" }}>
+                                FAQ
+                            </Link>
+                        </li> */}
+                    </ul>
+                </nav>
+            </div>
+        </aside>
     );
 }

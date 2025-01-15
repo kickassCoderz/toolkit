@@ -17,7 +17,8 @@
             "~widgets": ["./app/widgets"],
             "~widgets/*": ["./app/widgets/*"],
             "~styled-system": ["./styled-system"],
-            "~styled-system/*": ["./styled-system/*"]
+            "~styled-system/*": ["./styled-system/*"],
+            "~site-content": ["./.velite"]
         }
     },
     "include": ["app"]

@@ -1,0 +1,27 @@
+{
+    "name": "@kickass-coderz/capitalize-title",
+    "version": "0.0.0",
+    "license": "MIT",
+    "type": "module",
+    "exports": "./src/index.js",
+    "scripts": {
+        "check-types": "tsc --noEmit",
+        "lint": "eslint . --max-warnings 0"
+    },
+    "dependencies": {
+        "@radix-ui/colors": "3.0.0"
+    },
+    "devDependencies": {
+        "@kickass-coderz/eslint-config": "workspace:*",
+        "@kickass-coderz/ts-config": "workspace:*",
+        "typescript": "^5.7.2",
+        "typescript-eslint": "^8.19.0"
+    },
+    "peerDependencies": {
+        "@ark-ui/react": ">=4.6.0 <5",
+        "@pandacss/dev": ">=0.51.0 <1"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}

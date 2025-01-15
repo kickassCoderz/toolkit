@@ -13,6 +13,22 @@ export const typography = defineRecipe({
     jsx: ["Text", "Heading", "Em", "Strong", "Quote", "Link", "Code", "Kbd"],
     base: {},
     variants: {
+        transform: {
+            uppercase: {
+                textTransform: "uppercase",
+            },
+            lowercase: {
+                textTransform: "lowercase",
+            },
+            capitalize: {
+                textTransform: "capitalize",
+            },
+            capitalizeFirst: {
+                _firstLetter: {
+                    textTransform: "capitalize",
+                },
+            },
+        },
         srOnly: {
             true: {
                 srOnly: true,
