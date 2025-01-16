@@ -136,34 +136,36 @@ export function DocumentationToc({ entries }: DocumentationTocProperties) {
                                     data-depth={entryItem.depth}
                                     className={desktopEntryItemStyles}
                                 >
-                                    <Link asChild size="sm" css={{ colorPalette: "neutral" }}>
-                                        <RouterLink to="." hash={entryItem.url}>
+                                    <Link
+                                        asChild
+                                        size="sm"
+                                        underline={{
+                                            base: "hover",
+                                            _active: "always",
+                                        }}
+                                        css={{
+                                            colorPalette: {
+                                                base: "neutral",
+                                                _active: "accent",
+                                            },
+                                        }}
+                                    >
+                                        <RouterLink
+                                            to="."
+                                            hash={entryItem.url}
+                                            activeOptions={{
+                                                includeHash: true,
+                                            }}
+                                            activeProps={{
+                                                "data-active": "",
+                                            }}
+                                        >
                                             {entryItem.title}
                                         </RouterLink>
                                     </Link>
                                 </li>
                             )}
                         </For>
-                        {/* <li>
-                            <Link size="sm" css={{ colorPalette: "neutral" }}>
-                                Motivation
-                            </Link>
-                        </li>
-                        <li>
-                            <Link size="sm" css={{ colorPalette: "neutral" }}>
-                                Solution
-                            </Link>
-                        </li>
-                        <li>
-                            <Link size="sm" css={{ colorPalette: "neutral" }}>
-                                Acknowledgments
-                            </Link>
-                        </li>
-                        <li>
-                            <Link size="sm" css={{ colorPalette: "neutral" }}>
-                                FAQ
-                            </Link>
-                        </li> */}
                     </ul>
                 </nav>
             </div>

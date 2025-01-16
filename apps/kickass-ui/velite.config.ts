@@ -1,5 +1,4 @@
 import { capitalizeTitle } from "@kickass-coderz/capitalize-title";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import { defineCollection, defineConfig, s, z } from "velite";
 
@@ -7,11 +6,11 @@ const tocSchema = s.toc();
 type TocEntries = z.infer<typeof tocSchema>;
 
 function flattenToc(entries: TocEntries, depth = 0) {
-    const flattenedTocStack: Array<
-        Omit<TocEntries[number], "items"> & {
-            depth: number;
-        }
-    > = [];
+    const flattenedTocStack: Array<{
+        title: string;
+        url: string;
+        depth: number;
+    }> = [];
 
     for (const entry of entries) {
         flattenedTocStack.push({
@@ -37,12 +36,15 @@ const documentationCollection = defineCollection({
             meta: s.metadata(),
             toc: tocSchema,
             path: s.path(),
-            content: s.markdown(),
+            content: s.mdx(),
             order: s.number().optional(),
             sidebarLabel: s.string().optional(),
         })
         .transform((data) => ({
             ...data,
+            meta: {
+                readingTime: data.meta.readingTime,
+            },
             toc: flattenToc(data.toc),
             title: capitalizeTitle(data.title),
             sidebarLabel: capitalizeTitle(data.sidebarLabel ?? data.title),
@@ -58,31 +60,26 @@ const config = defineConfig({
     markdown: {
         rehypePlugins: [
             rehypeSlug,
-            [
-                rehypeAutolinkHeadings,
-                {
-                    behavior: "wrap",
-                    properties: {
-                        // className: ["subheading-anchor"],
-                        ariaLabel: "Link to section",
-                    },
-                },
-            ],
+
+            // [
+            //     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            //     rehypeShiki as any,
+            //     {
+            //         theme: "nord",
+            //     },
+            // ],
         ],
     },
     mdx: {
         rehypePlugins: [
             rehypeSlug,
-            [
-                rehypeAutolinkHeadings,
-                {
-                    behavior: "wrap",
-                    properties: {
-                        // className: ["subheading-anchor"],
-                        ariaLabel: "Link to section",
-                    },
-                },
-            ],
+            // [
+            //     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            //     rehypeShiki as any,
+            //     {
+            //         theme: "nord",
+            //     },
+            // ],
         ],
     },
 });

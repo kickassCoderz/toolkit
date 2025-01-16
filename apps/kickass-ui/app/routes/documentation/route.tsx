@@ -34,8 +34,6 @@ const mainStyles = stack({
 function RouteComponent() {
     const sidebarData = Route.useLoaderData();
 
-    console.log(sidebarData);
-
     return (
         <div className={rootStyles}>
             <DocumentationHeader navigationData={sidebarData} />

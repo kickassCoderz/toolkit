@@ -1,9 +1,9 @@
-import { createKickassUIPreset, gray, plum } from "@kickass-coderz/panda-preset-kickass";
+import { createKickassUIPreset, mauve, plum } from "@kickass-coderz/panda-preset-kickass";
 import { defineConfig } from "@pandacss/dev";
 
 const kickassPreset = createKickassUIPreset({
     accentColor: plum,
-    neutralColor: gray,
+    neutralColor: mauve,
 });
 
 export default defineConfig({

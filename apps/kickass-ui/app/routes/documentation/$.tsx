@@ -1,6 +1,6 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 
-import { createDocumentationTocData } from "~entities/documentation/utils/create-documentation-toc";
+import { MDXContent } from "~features/documentation/ui/mdx-content";
 import { Heading } from "~shared/design-system/typography/heading";
 import { Text } from "~shared/design-system/typography/text";
 import { docs } from "~site-content";
@@ -22,7 +22,9 @@ export const Route = createFileRoute("/documentation/$")({
     component: RouteComponent,
 });
 
-const headerStyles = css({});
+const headerStyles = css({
+    marginBottom: "12",
+});
 
 const headerHgroupStyles = stack({
     gap: "2",
@@ -30,8 +32,6 @@ const headerHgroupStyles = stack({
 
 function RouteComponent() {
     const pageData = Route.useLoaderData();
-
-    console.log(pageData.toc);
 
     return (
         <>
@@ -42,7 +42,7 @@ function RouteComponent() {
                     paddingY: "12",
                     display: "flex",
                     flexDirection: "column",
-                    gap: "12",
+                    // gap: "12",
                 })}
             >
                 <header className={headerStyles}>
@@ -53,11 +53,7 @@ function RouteComponent() {
                         </Text>
                     </hgroup>
                 </header>
-                <div
-                    dangerouslySetInnerHTML={{
-                        __html: pageData.content,
-                    }}
-                />
+                <MDXContent code={pageData.content} />
             </article>
             <DocumentationToc entries={pageData.toc} />
         </>
