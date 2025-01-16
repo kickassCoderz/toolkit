@@ -8,8 +8,8 @@
     "type": "module",
     "scripts": {
         "build": "vinxi build",
-        "codegen:content": "velite",
         "dev": "vinxi dev",
+        "dev:content": "velite --watch",
         "lint": "eslint .  --max-warnings 0",
         "prepare": "panda codegen",
         "start": "vinxi start"

@@ -11,11 +11,16 @@ import {
     TableRoot,
     TableRow,
 } from "~shared/design-system/table";
+import { Code } from "~shared/design-system/typography/code";
 import { Em } from "~shared/design-system/typography/em";
 import { Heading } from "~shared/design-system/typography/heading";
 import { Link } from "~shared/design-system/typography/link";
 import { Strong } from "~shared/design-system/typography/strong";
 import { Text } from "~shared/design-system/typography/text";
+
+function isString(value: unknown): value is string {
+    return typeof value === "string";
+}
 
 type HeadingProperties = Readonly<{
     children: React.ReactNode;
@@ -28,11 +33,13 @@ const sharedComponents = {
             {id ? (
                 <Link asChild highContrast css={{ colorPalette: "neutral" }}>
                     <RouterLink to="." hash={id}>
-                        {capitalizeTitle(children)}
+                        {isString(children) ? capitalizeTitle(children) : children}
                     </RouterLink>
                 </Link>
-            ) : (
+            ) : isString(children) ? (
                 capitalizeTitle(children)
+            ) : (
+                children
             )}
         </Heading>
     ),
@@ -42,11 +49,13 @@ const sharedComponents = {
                 {id ? (
                     <Link asChild highContrast css={{ colorPalette: "neutral" }}>
                         <RouterLink to="." hash={id}>
-                            {capitalizeTitle(children)}
+                            {isString(children) ? capitalizeTitle(children) : children}
                         </RouterLink>
                     </Link>
-                ) : (
+                ) : isString(children) ? (
                     capitalizeTitle(children)
+                ) : (
+                    children
                 )}
             </Heading>
         );
@@ -56,11 +65,13 @@ const sharedComponents = {
             {id ? (
                 <Link asChild highContrast css={{ colorPalette: "neutral" }}>
                     <RouterLink to="." hash={id}>
-                        {capitalizeTitle(children)}
+                        {isString(children) ? capitalizeTitle(children) : children}
                     </RouterLink>
                 </Link>
-            ) : (
+            ) : isString(children) ? (
                 capitalizeTitle(children)
+            ) : (
+                children
             )}
         </Heading>
     ),
@@ -69,11 +80,13 @@ const sharedComponents = {
             {id ? (
                 <Link asChild highContrast css={{ colorPalette: "neutral" }}>
                     <RouterLink to="." hash={id}>
-                        {capitalizeTitle(children)}
+                        {isString(children) ? capitalizeTitle(children) : children}
                     </RouterLink>
                 </Link>
-            ) : (
+            ) : isString(children) ? (
                 capitalizeTitle(children)
+            ) : (
+                children
             )}
         </Heading>
     ),
@@ -82,11 +95,13 @@ const sharedComponents = {
             {id ? (
                 <Link asChild highContrast css={{ colorPalette: "neutral" }}>
                     <RouterLink to="." hash={id}>
-                        {capitalizeTitle(children)}
+                        {isString(children) ? capitalizeTitle(children) : children}
                     </RouterLink>
                 </Link>
-            ) : (
+            ) : isString(children) ? (
                 capitalizeTitle(children)
+            ) : (
+                children
             )}
         </Heading>
     ),
@@ -95,11 +110,13 @@ const sharedComponents = {
             {id ? (
                 <Link asChild highContrast css={{ colorPalette: "neutral" }}>
                     <RouterLink to="." hash={id}>
-                        {capitalizeTitle(children)}
+                        {isString(children) ? capitalizeTitle(children) : children}
                     </RouterLink>
                 </Link>
-            ) : (
+            ) : isString(children) ? (
                 capitalizeTitle(children)
+            ) : (
+                children
             )}
         </Heading>
     ),
@@ -113,6 +130,7 @@ const sharedComponents = {
     ),
     em: Em,
     strong: Strong,
+    code: Code,
     // code: ({ children }: { readonly children: React.ReactNode }) => <Code>{children}</Code>,
     table: ({ children }: { readonly children: React.ReactNode }) => (
         <TableRoot variant="surface" css={{ my: "6" }}>

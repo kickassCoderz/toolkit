@@ -22,5 +22,8 @@ export default tseslint.config(
         files: ["**/*.{js,cjs,mjs}"],
         extends: [tsTypecheckDisabled],
     },
-    prettier
+    prettier,
+    {
+        ignores: ["dist"],
+    }
 );
