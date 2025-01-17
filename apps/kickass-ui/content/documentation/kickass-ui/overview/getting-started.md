@@ -27,10 +27,4 @@ You will learn more in the next section.
 
 ## Acknowledgments
 
-### Testing
-
-#### if
-
-##### flattened
-
 ## FAQ
