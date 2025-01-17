@@ -14,7 +14,7 @@ function flattenToc(entries: TocEntries, depth = 0) {
 
     for (const entry of entries) {
         flattenedTocStack.push({
-            title: entry.title,
+            title: capitalizeTitle(entry.title),
             url: entry.url.replaceAll("#", ""),
             depth,
         });

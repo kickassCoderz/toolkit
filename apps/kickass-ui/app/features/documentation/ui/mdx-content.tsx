@@ -1,8 +1,10 @@
 import { capitalizeTitle } from "@kickass-coderz/capitalize-title";
 import { Link as RouterLink } from "@tanstack/react-router";
+import { LinkIcon } from "lucide-react";
 import * as runtime from "react/jsx-runtime";
 
 import { Button } from "~shared/design-system/button";
+import { Icon } from "~shared/design-system/icon";
 import {
     TableBody,
     TableCell,
@@ -31,9 +33,30 @@ const sharedComponents = {
     h1: ({ id, children, ...rest }: HeadingProperties) => (
         <Heading as="h1" id={id} {...rest}>
             {id ? (
-                <Link asChild highContrast css={{ colorPalette: "neutral" }}>
+                <Link
+                    asChild
+                    highContrast
+                    className="group"
+                    css={{
+                        colorPalette: "neutral",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "2",
+                    }}
+                >
                     <RouterLink to="." hash={id}>
                         {isString(children) ? capitalizeTitle(children) : children}
+
+                        <Icon
+                            css={{
+                                fontSize: "md",
+                                color: "neutral.a11",
+                                opacity: "0",
+                                _groupHover: { opacity: "1" },
+                            }}
+                        >
+                            <LinkIcon />
+                        </Icon>
                     </RouterLink>
                 </Link>
             ) : isString(children) ? (
@@ -47,9 +70,29 @@ const sharedComponents = {
         return (
             <Heading as="h2" id={id} size="3xl" css={{ mt: "12", mb: "3" }} {...rest}>
                 {id ? (
-                    <Link asChild highContrast css={{ colorPalette: "neutral" }}>
+                    <Link
+                        asChild
+                        highContrast
+                        className="group"
+                        css={{
+                            colorPalette: "neutral",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "2",
+                        }}
+                    >
                         <RouterLink to="." hash={id}>
                             {isString(children) ? capitalizeTitle(children) : children}
+                            <Icon
+                                css={{
+                                    fontSize: "md",
+                                    color: "neutral.a11",
+                                    opacity: "0",
+                                    _groupHover: { opacity: "1" },
+                                }}
+                            >
+                                <LinkIcon />
+                            </Icon>
                         </RouterLink>
                     </Link>
                 ) : isString(children) ? (
@@ -63,9 +106,29 @@ const sharedComponents = {
     h3: ({ id, children, ...rest }: HeadingProperties) => (
         <Heading as="h3" size="2xl" id={id} css={{ mt: "10", mb: "2" }} {...rest}>
             {id ? (
-                <Link asChild highContrast css={{ colorPalette: "neutral" }}>
+                <Link
+                    asChild
+                    highContrast
+                    className="group"
+                    css={{
+                        colorPalette: "neutral",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "2",
+                    }}
+                >
                     <RouterLink to="." hash={id}>
                         {isString(children) ? capitalizeTitle(children) : children}
+                        <Icon
+                            css={{
+                                fontSize: "md",
+                                color: "neutral.a11",
+                                opacity: "0",
+                                _groupHover: { opacity: "1" },
+                            }}
+                        >
+                            <LinkIcon />
+                        </Icon>
                     </RouterLink>
                 </Link>
             ) : isString(children) ? (
@@ -78,9 +141,29 @@ const sharedComponents = {
     h4: ({ id, children, ...rest }: HeadingProperties) => (
         <Heading as="h4" id={id} size="xl" css={{ mt: "8", mb: "3" }} {...rest}>
             {id ? (
-                <Link asChild highContrast css={{ colorPalette: "neutral" }}>
+                <Link
+                    asChild
+                    highContrast
+                    className="group"
+                    css={{
+                        colorPalette: "neutral",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "2",
+                    }}
+                >
                     <RouterLink to="." hash={id}>
                         {isString(children) ? capitalizeTitle(children) : children}
+                        <Icon
+                            css={{
+                                fontSize: "md",
+                                color: "neutral.a11",
+                                opacity: "0",
+                                _groupHover: { opacity: "1" },
+                            }}
+                        >
+                            <LinkIcon />
+                        </Icon>
                     </RouterLink>
                 </Link>
             ) : isString(children) ? (
@@ -93,9 +176,29 @@ const sharedComponents = {
     h5: ({ id, children, ...rest }: HeadingProperties) => (
         <Heading as="h5" size="lg" id={id} {...rest}>
             {id ? (
-                <Link asChild highContrast css={{ colorPalette: "neutral" }}>
+                <Link
+                    asChild
+                    highContrast
+                    className="group"
+                    css={{
+                        colorPalette: "neutral",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "2",
+                    }}
+                >
                     <RouterLink to="." hash={id}>
                         {isString(children) ? capitalizeTitle(children) : children}
+                        <Icon
+                            css={{
+                                fontSize: "md",
+                                color: "neutral.a11",
+                                opacity: "0",
+                                _groupHover: { opacity: "1" },
+                            }}
+                        >
+                            <LinkIcon />
+                        </Icon>
                     </RouterLink>
                 </Link>
             ) : isString(children) ? (
@@ -108,9 +211,29 @@ const sharedComponents = {
     h6: ({ id, children, ...rest }: HeadingProperties) => (
         <Heading as="h6" size="md" id={id} {...rest}>
             {id ? (
-                <Link asChild highContrast css={{ colorPalette: "neutral" }}>
+                <Link
+                    asChild
+                    highContrast
+                    className="group"
+                    css={{
+                        colorPalette: "neutral",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "2",
+                    }}
+                >
                     <RouterLink to="." hash={id}>
                         {isString(children) ? capitalizeTitle(children) : children}
+                        <Icon
+                            css={{
+                                fontSize: "md",
+                                color: "neutral.a11",
+                                opacity: "0",
+                                _groupHover: { opacity: "1" },
+                            }}
+                        >
+                            <LinkIcon />
+                        </Icon>
                     </RouterLink>
                 </Link>
             ) : isString(children) ? (
