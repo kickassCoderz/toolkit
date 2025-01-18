@@ -1,18 +1,20 @@
+import { linkOptions, type ToOptions } from "@tanstack/react-router";
+
 import type { DocumentationCollection } from "~site-content";
 
-export type SidebarDocumentationNaviagationData = Array<
+export type DocumentationNavigationData = ReadonlyArray<
     [
         string,
         Array<{
             label: string;
-            slug: string;
+            linkOptions: ToOptions;
         }>,
     ]
 >;
 
-export function createSidebarDocumentationNaviagationData(
+export function createDocumentationNavigationData(
     documentationCollection: Array<DocumentationCollection>
-): SidebarDocumentationNaviagationData {
+): DocumentationNavigationData {
     const groupedByCategory = Object.groupBy(
         documentationCollection,
         (documentationItem) => documentationItem.category
@@ -39,6 +41,20 @@ export function createSidebarDocumentationNaviagationData(
 
     return sorted.map((entries) => [
         entries[0],
-        entries[1].map((item) => ({ label: item.sidebarLabel, slug: item.slug })),
+        entries[1].map((item) => ({
+            label: item.sidebarLabel,
+            linkOptions: linkOptions({
+                to: "/documentation/$",
+                params: {
+                    _splat: item.slug,
+                },
+                activeOptions: {
+                    exact: true,
+                },
+                activeProps: {
+                    "data-active": "",
+                },
+            }),
+        })),
     ]);
 }

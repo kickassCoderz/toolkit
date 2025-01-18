@@ -1,6 +1,7 @@
 import { createFileRoute, Link as RouterLink } from "@tanstack/react-router";
 import { ArrowRightIcon, PaletteIcon, SwatchBookIcon } from "lucide-react";
 
+import { DOCUMENTATION_ROOT_LINK_OPTIONS } from "~features/navigation/consts";
 import { Logo } from "~shared/components/logo";
 import { Button } from "~shared/design-system/button";
 import { Icon } from "~shared/design-system/icon";
@@ -11,7 +12,7 @@ import { Stack } from "~styled-system/jsx";
 import { container, stack } from "~styled-system/patterns";
 import { section } from "~styled-system/recipes";
 
-export const Route = createFileRoute("/_marketing/")({
+export const Route = createFileRoute("/")({
     component: RouteComponent,
 });
 
@@ -65,12 +66,7 @@ function RouteComponent() {
                 </hgroup>
                 <Stack direction={["column", "row"]} gap="4">
                     <Button asChild fullWidth={[true, false]} size="lg" variant="solid">
-                        <RouterLink
-                            to="/documentation/$"
-                            params={{
-                                _splat: "kickass-ui/overview/introduction",
-                            }}
-                        >
+                        <RouterLink {...DOCUMENTATION_ROOT_LINK_OPTIONS}>
                             Get Started
                             <Icon>
                                 <ArrowRightIcon />

@@ -49,7 +49,7 @@ const documentationCollection = defineCollection({
             title: capitalizeTitle(data.title),
             sidebarLabel: capitalizeTitle(data.sidebarLabel ?? data.title),
             slug: data.path.split("/").slice(1).join("/"),
-            category: capitalizeTitle(data.path.split("/").slice(2, 3).join("")),
+            category: capitalizeTitle(data.path.split("/").slice(1, 2).join("")),
         })),
 });
 

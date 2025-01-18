@@ -1,5 +1,8 @@
 import { css } from "~styled-system/css";
 
+import { GlobalFooter } from "./global-footer";
+import { GlobalHeader } from "./global-header";
+
 const rootStyles = css({
     position: "relative",
     isolation: "isolate",
@@ -11,5 +14,11 @@ type GlobalLayoutProperties = Readonly<{
 }>;
 
 export function GlobalLayout({ children }: GlobalLayoutProperties) {
-    return <div className={rootStyles}>{children}</div>;
+    return (
+        <div className={rootStyles}>
+            <GlobalHeader />
+            {children}
+            <GlobalFooter />
+        </div>
+    );
 }

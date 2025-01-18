@@ -72,14 +72,14 @@ export function DocumentationToc({ entries }: DocumentationTocProperties) {
                     xl: "fit",
                 },
                 width: {
-                    base: "full",
+                    base: "auto",
                     xl: "64",
                 },
                 flexShrink: "0",
                 position: "sticky",
                 top: {
                     base: "16",
-                    lg: "0",
+                    lg: "16",
                 },
                 left: "0",
                 xlDown: {
@@ -91,6 +91,13 @@ export function DocumentationToc({ entries }: DocumentationTocProperties) {
                     borderBottomWidth: "1px",
                     borderBottomStyle: "solid",
                     borderImageSlice: "1",
+                },
+
+                marginX: {
+                    base: "-4",
+                    md: "-6",
+                    lg: "-8",
+                    xl: "0",
                 },
             })}
         >

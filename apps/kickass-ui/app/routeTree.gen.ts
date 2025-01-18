@@ -12,11 +12,10 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as DocumentationRouteImport } from './routes/documentation/route'
-import { Route as MarketingRouteImport } from './routes/_marketing/route'
-import { Route as MarketingIndexImport } from './routes/_marketing/index'
+import { Route as IndexImport } from './routes/index'
+import { Route as ShowcaseIndexImport } from './routes/showcase/index'
+import { Route as PlaygroundIndexImport } from './routes/playground/index'
 import { Route as DocumentationSplatImport } from './routes/documentation/$'
-import { Route as MarketingShowcaseIndexImport } from './routes/_marketing/showcase/index'
-import { Route as MarketingPlaygroundIndexImport } from './routes/_marketing/playground/index'
 
 // Create/Update Routes
 
@@ -26,15 +25,22 @@ const DocumentationRouteRoute = DocumentationRouteImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const MarketingRouteRoute = MarketingRouteImport.update({
-  id: '/_marketing',
+const IndexRoute = IndexImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRoute,
 } as any)
 
-const MarketingIndexRoute = MarketingIndexImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => MarketingRouteRoute,
+const ShowcaseIndexRoute = ShowcaseIndexImport.update({
+  id: '/showcase/',
+  path: '/showcase/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const PlaygroundIndexRoute = PlaygroundIndexImport.update({
+  id: '/playground/',
+  path: '/playground/',
+  getParentRoute: () => rootRoute,
 } as any)
 
 const DocumentationSplatRoute = DocumentationSplatImport.update({
@@ -43,27 +49,15 @@ const DocumentationSplatRoute = DocumentationSplatImport.update({
   getParentRoute: () => DocumentationRouteRoute,
 } as any)
 
-const MarketingShowcaseIndexRoute = MarketingShowcaseIndexImport.update({
-  id: '/showcase/',
-  path: '/showcase/',
-  getParentRoute: () => MarketingRouteRoute,
-} as any)
-
-const MarketingPlaygroundIndexRoute = MarketingPlaygroundIndexImport.update({
-  id: '/playground/',
-  path: '/playground/',
-  getParentRoute: () => MarketingRouteRoute,
-} as any)
-
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/_marketing': {
-      id: '/_marketing'
-      path: ''
-      fullPath: ''
-      preLoaderRoute: typeof MarketingRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
     '/documentation': {
@@ -80,47 +74,24 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DocumentationSplatImport
       parentRoute: typeof DocumentationRouteImport
     }
-    '/_marketing/': {
-      id: '/_marketing/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof MarketingIndexImport
-      parentRoute: typeof MarketingRouteImport
-    }
-    '/_marketing/playground/': {
-      id: '/_marketing/playground/'
+    '/playground/': {
+      id: '/playground/'
       path: '/playground'
       fullPath: '/playground'
-      preLoaderRoute: typeof MarketingPlaygroundIndexImport
-      parentRoute: typeof MarketingRouteImport
+      preLoaderRoute: typeof PlaygroundIndexImport
+      parentRoute: typeof rootRoute
     }
-    '/_marketing/showcase/': {
-      id: '/_marketing/showcase/'
+    '/showcase/': {
+      id: '/showcase/'
       path: '/showcase'
       fullPath: '/showcase'
-      preLoaderRoute: typeof MarketingShowcaseIndexImport
-      parentRoute: typeof MarketingRouteImport
+      preLoaderRoute: typeof ShowcaseIndexImport
+      parentRoute: typeof rootRoute
     }
   }
 }
 
 // Create and export the route tree
-
-interface MarketingRouteRouteChildren {
-  MarketingIndexRoute: typeof MarketingIndexRoute
-  MarketingPlaygroundIndexRoute: typeof MarketingPlaygroundIndexRoute
-  MarketingShowcaseIndexRoute: typeof MarketingShowcaseIndexRoute
-}
-
-const MarketingRouteRouteChildren: MarketingRouteRouteChildren = {
-  MarketingIndexRoute: MarketingIndexRoute,
-  MarketingPlaygroundIndexRoute: MarketingPlaygroundIndexRoute,
-  MarketingShowcaseIndexRoute: MarketingShowcaseIndexRoute,
-}
-
-const MarketingRouteRouteWithChildren = MarketingRouteRoute._addFileChildren(
-  MarketingRouteRouteChildren,
-)
 
 interface DocumentationRouteRouteChildren {
   DocumentationSplatRoute: typeof DocumentationSplatRoute
@@ -134,62 +105,62 @@ const DocumentationRouteRouteWithChildren =
   DocumentationRouteRoute._addFileChildren(DocumentationRouteRouteChildren)
 
 export interface FileRoutesByFullPath {
-  '': typeof MarketingRouteRouteWithChildren
+  '/': typeof IndexRoute
   '/documentation': typeof DocumentationRouteRouteWithChildren
   '/documentation/$': typeof DocumentationSplatRoute
-  '/': typeof MarketingIndexRoute
-  '/playground': typeof MarketingPlaygroundIndexRoute
-  '/showcase': typeof MarketingShowcaseIndexRoute
+  '/playground': typeof PlaygroundIndexRoute
+  '/showcase': typeof ShowcaseIndexRoute
 }
 
 export interface FileRoutesByTo {
+  '/': typeof IndexRoute
   '/documentation': typeof DocumentationRouteRouteWithChildren
   '/documentation/$': typeof DocumentationSplatRoute
-  '/': typeof MarketingIndexRoute
-  '/playground': typeof MarketingPlaygroundIndexRoute
-  '/showcase': typeof MarketingShowcaseIndexRoute
+  '/playground': typeof PlaygroundIndexRoute
+  '/showcase': typeof ShowcaseIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
-  '/_marketing': typeof MarketingRouteRouteWithChildren
+  '/': typeof IndexRoute
   '/documentation': typeof DocumentationRouteRouteWithChildren
   '/documentation/$': typeof DocumentationSplatRoute
-  '/_marketing/': typeof MarketingIndexRoute
-  '/_marketing/playground/': typeof MarketingPlaygroundIndexRoute
-  '/_marketing/showcase/': typeof MarketingShowcaseIndexRoute
+  '/playground/': typeof PlaygroundIndexRoute
+  '/showcase/': typeof ShowcaseIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | ''
+    | '/'
     | '/documentation'
     | '/documentation/$'
-    | '/'
     | '/playground'
     | '/showcase'
   fileRoutesByTo: FileRoutesByTo
-  to: '/documentation' | '/documentation/$' | '/' | '/playground' | '/showcase'
+  to: '/' | '/documentation' | '/documentation/$' | '/playground' | '/showcase'
   id:
     | '__root__'
-    | '/_marketing'
+    | '/'
     | '/documentation'
     | '/documentation/$'
-    | '/_marketing/'
-    | '/_marketing/playground/'
-    | '/_marketing/showcase/'
+    | '/playground/'
+    | '/showcase/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
-  MarketingRouteRoute: typeof MarketingRouteRouteWithChildren
+  IndexRoute: typeof IndexRoute
   DocumentationRouteRoute: typeof DocumentationRouteRouteWithChildren
+  PlaygroundIndexRoute: typeof PlaygroundIndexRoute
+  ShowcaseIndexRoute: typeof ShowcaseIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  MarketingRouteRoute: MarketingRouteRouteWithChildren,
+  IndexRoute: IndexRoute,
   DocumentationRouteRoute: DocumentationRouteRouteWithChildren,
+  PlaygroundIndexRoute: PlaygroundIndexRoute,
+  ShowcaseIndexRoute: ShowcaseIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -202,17 +173,14 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/_marketing",
-        "/documentation"
+        "/",
+        "/documentation",
+        "/playground/",
+        "/showcase/"
       ]
     },
-    "/_marketing": {
-      "filePath": "_marketing/route.tsx",
-      "children": [
-        "/_marketing/",
-        "/_marketing/playground/",
-        "/_marketing/showcase/"
-      ]
+    "/": {
+      "filePath": "index.tsx"
     },
     "/documentation": {
       "filePath": "documentation/route.tsx",
@@ -224,17 +192,11 @@ export const routeTree = rootRoute
       "filePath": "documentation/$.tsx",
       "parent": "/documentation"
     },
-    "/_marketing/": {
-      "filePath": "_marketing/index.tsx",
-      "parent": "/_marketing"
+    "/playground/": {
+      "filePath": "playground/index.tsx"
     },
-    "/_marketing/playground/": {
-      "filePath": "_marketing/playground/index.tsx",
-      "parent": "/_marketing"
-    },
-    "/_marketing/showcase/": {
-      "filePath": "_marketing/showcase/index.tsx",
-      "parent": "/_marketing"
+    "/showcase/": {
+      "filePath": "showcase/index.tsx"
     }
   }
 }

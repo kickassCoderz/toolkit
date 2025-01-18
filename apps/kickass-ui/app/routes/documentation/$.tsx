@@ -1,12 +1,12 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 
-import { MDXContent } from "~features/documentation/ui/mdx-content";
+import { MDXContent } from "~features/content/ui/mdx-content";
 import { Heading } from "~shared/design-system/typography/heading";
 import { Text } from "~shared/design-system/typography/text";
 import { docs } from "~site-content";
 import { css } from "~styled-system/css";
-import { container, stack } from "~styled-system/patterns";
-import { DocumentationToc } from "~widgets/docs/navigation/ui/documentation-toc";
+import { stack } from "~styled-system/patterns";
+import { DocumentationToc } from "~widgets/docs/ui/documentation-toc";
 
 export const Route = createFileRoute("/documentation/$")({
     loader({ params }) {
@@ -22,6 +22,23 @@ export const Route = createFileRoute("/documentation/$")({
     component: RouteComponent,
 });
 
+const rootStyles = stack({
+    gap: "0",
+    position: "relative",
+    flex: "1",
+    direction: {
+        base: "column-reverse",
+        xl: "row",
+    },
+});
+
+const contentStyles = css({
+    width: "full",
+    maxWidth: "prose",
+    paddingY: "12",
+    marginX: "auto",
+});
+
 const headerStyles = css({
     marginBottom: "12",
 });
@@ -34,17 +51,8 @@ function RouteComponent() {
     const pageData = Route.useLoaderData();
 
     return (
-        <>
-            <article
-                className={container({
-                    width: "full",
-                    maxWidth: "3xl",
-                    paddingY: "12",
-                    display: "flex",
-                    flexDirection: "column",
-                    // gap: "12",
-                })}
-            >
+        <article className={rootStyles}>
+            <div className={contentStyles}>
                 <header className={headerStyles}>
                     <hgroup className={headerHgroupStyles}>
                         <Heading size="4xl">{pageData.title}</Heading>
@@ -54,8 +62,8 @@ function RouteComponent() {
                     </hgroup>
                 </header>
                 <MDXContent code={pageData.content} />
-            </article>
+            </div>
             <DocumentationToc entries={pageData.toc} />
-        </>
+        </article>
     );
 }
