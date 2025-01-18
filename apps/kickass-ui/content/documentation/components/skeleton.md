@@ -1,0 +1,6 @@
+---
+title: Skeleton
+description: Replaces content with same shape placeholder that indicates a loading state.
+---
+
+## API Reference

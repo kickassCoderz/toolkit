@@ -1,0 +1,6 @@
+---
+title: Table
+description: Semantic table element for presenting data.
+---
+
+## API Reference
