@@ -1,4 +1,4 @@
-import { KickassUIBaseColorScale } from "../types";
+import type { KickassUIBaseColorScale } from "../types";
 import { createKickassUIColorScale } from "./create-kickass-ui-color-scale";
 
 type CreateKickassUIThemeOptions = {

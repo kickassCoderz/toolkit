@@ -67,6 +67,7 @@ export function createKickassUIPreset({
 
 export default createKickassUIPreset({ accentColor: indigo, neutralColor: slate });
 
-export * from "./base-color-scales/accent";
-export * from "./base-color-scales/neutral";
+export * from "./base-color-scales";
 export * from "./themes";
+export * from "./types";
+export * from "./utils";

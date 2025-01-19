@@ -29,6 +29,9 @@ importers:
       prettier:
         specifier: ^3.4.2
         version: 3.4.2
+      tsup:
+        specifier: ^8.3.5
+        version: 8.3.5(jiti@2.4.2)(postcss@8.4.49)(tsx@4.19.2)(typescript@5.7.3)
       turbo:
         specifier: ^2.3.3
         version: 2.3.3
@@ -184,9 +187,6 @@ importers:
       '@kickass-coderz/ts-config':
         specifier: workspace:*
         version: link:../ts-config
-      tsup:
-        specifier: ^8.3.5
-        version: 8.3.5(jiti@2.4.2)(postcss@8.4.49)(tsx@4.19.2)(typescript@5.7.3)
       typescript:
         specifier: ^5.7.2
         version: 5.7.3

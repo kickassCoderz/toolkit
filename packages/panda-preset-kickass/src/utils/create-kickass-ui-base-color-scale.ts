@@ -1,4 +1,4 @@
-import { KickassUIBaseColorScale } from "../types";
+import type { KickassUIBaseColorScale } from "../types";
 
 export function createKickassUIBaseColorScale(
     baseScale: KickassUIBaseColorScale
