@@ -1,0 +1,65 @@
+{
+    "name": "@kickass-coderz/kaui-react",
+    "version": "0.0.0",
+    "license": "MIT",
+    "sideEffects": false,
+    "type": "module",
+    "exports": {
+        "./components/*": {
+            "types": "./dist/components/*.d.ts",
+            "import": "./dist/components/*.js"
+        },
+        "./system/css": {
+            "types": "./system/css/index.d.ts",
+            "import": "./system/css/index.js"
+        },
+        "./system/tokens": {
+            "types": "./system/tokens/index.d.ts",
+            "import": "./system/tokens/index.js"
+        },
+        "./system/types": {
+            "types": "./system/types/index.d.ts",
+            "import": "./system/types/index.js"
+        },
+        "./system/patterns": {
+            "types": "./system/patterns/index.d.ts",
+            "import": "./system/patterns/index.js"
+        },
+        "./system/recipes": {
+            "types": "./system/recipes/index.d.ts",
+            "import": "./system/recipes/index.js"
+        },
+        "./system/jsx": {
+            "types": "./system/jsx/index.d.ts",
+            "import": "./system/jsx/index.js"
+        },
+        "./system/themes": {
+            "types": "./system/themes/index.d.ts",
+            "import": "./system/themes/index.js"
+        },
+        "./system/styles.css": "./system/styles.css"
+    },
+    "scripts": {
+        "build": "tsup",
+        "panda-codegen": "panda codegen --clean",
+        "panda-emit": "panda emit-pkg ./system",
+        "panda-init": "panda init"
+    },
+    "dependencies": {
+        "@ark-ui/react": "4.8.1"
+    },
+    "devDependencies": {
+        "@kickass-coderz/eslint-config": "workspace:*",
+        "@kickass-coderz/panda-preset-kaui": "workspace:*",
+        "@kickass-coderz/ts-config": "workspace:*",
+        "@pandacss/dev": "0.51.1",
+        "@types/react": "^18",
+        "react": "^18",
+        "typescript": "^5.7.2",
+        "typescript-eslint": "^8.19.0"
+    },
+    "peerDependencies": {
+        "@pandacss/dev": "0.51.1",
+        "react": ">= 18"
+    }
+}

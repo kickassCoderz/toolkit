@@ -28,7 +28,7 @@
     },
     "devDependencies": {
         "@kickass-coderz/eslint-config": "workspace:*",
-        "@kickass-coderz/panda-preset-kickass": "workspace:*",
+        "@kickass-coderz/panda-preset-kaui": "workspace:*",
         "@kickass-coderz/ts-config": "workspace:*",
         "@pandacss/dev": "^0.51.1",
         "@tanstack/eslint-plugin-router": "^1.92.7",

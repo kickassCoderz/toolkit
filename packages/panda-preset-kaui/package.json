@@ -1,5 +1,5 @@
 {
-    "name": "@kickass-coderz/panda-preset-kickass",
+    "name": "@kickass-coderz/panda-preset-kaui",
     "version": "0.0.0",
     "license": "MIT",
     "type": "module",
@@ -19,6 +19,8 @@
         "lint": "eslint . --max-warnings 0"
     },
     "dependencies": {
+        "@ark-ui/react": "4.8.1",
+        "@pandacss/dev": "0.51.1",
         "@radix-ui/colors": "3.0.0"
     },
     "devDependencies": {
@@ -28,8 +30,8 @@
         "typescript-eslint": "^8.19.0"
     },
     "peerDependencies": {
-        "@ark-ui/react": ">=4.6.0 <5",
-        "@pandacss/dev": ">=0.51.0 <1"
+        "@ark-ui/react": "4.8.1",
+        "@pandacss/dev": "0.51.1"
     },
     "publishConfig": {
         "access": "public"
