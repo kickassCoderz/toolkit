@@ -1,25 +1,14 @@
 import { definePreset } from "@pandacss/dev";
 
-import { indigo } from "./base-color-scales/accent";
-import { slate } from "./base-color-scales/neutral";
 import { conditions } from "./conditions";
 import { globalCss } from "./global-css";
 import { theme } from "./theme";
-import type { KickassUIBaseColorScale } from "./types";
+import {
+    createKickassUIAdditionalColorScales,
+    type KickassUIAdditionalColorScale,
+} from "./utils/create-kickass-ui-additional-color-scales";
+import type { KickassUIBaseColorScale } from "./utils/create-kickass-ui-base-color-scale";
 import { createKickassUIColorScale } from "./utils/create-kickass-ui-color-scale";
-
-export { createKickassUITheme } from "./utils/create-kickass-ui-theme";
-
-type KickassUIAdditionalColorScale = {
-    name: string;
-    scale: KickassUIBaseColorScale;
-};
-
-type CreateKickassUIPresetOptions = {
-    accentColor: KickassUIBaseColorScale;
-    neutralColor: KickassUIBaseColorScale;
-    additionalColors?: Array<KickassUIAdditionalColorScale> | undefined;
-};
 
 export function createKickassUIPreset({
     accentColor,
@@ -28,16 +17,10 @@ export function createKickassUIPreset({
 }: CreateKickassUIPresetOptions) {
     const accentScale = createKickassUIColorScale({ name: "accent", baseScale: accentColor });
     const neutralScale = createKickassUIColorScale({ name: "neutral", baseScale: neutralColor });
-    const additionalColorScales = Object.fromEntries(
-        additionalColors.map(({ name, scale }) => {
-            const colorScale = createKickassUIColorScale({ name, baseScale: scale });
-
-            return [colorScale.name, colorScale.scale] as const;
-        })
-    );
+    const additionalColorScales = createKickassUIAdditionalColorScales(additionalColors);
 
     return definePreset({
-        name: "Kickass UI",
+        name: "@kickass-coderz/panda-preset-kaui",
         presets: ["@pandacss/preset-base"],
         globalCss: {
             ...globalCss,
@@ -65,9 +48,29 @@ export function createKickassUIPreset({
     });
 }
 
-export default createKickassUIPreset({ accentColor: indigo, neutralColor: slate });
+export {
+    createKickassUIAdditionalColorScales,
+    type KickassUIAdditionalColorScale,
+} from "./utils/create-kickass-ui-additional-color-scales";
+export {
+    createKickassUIBaseColorScale,
+    type KickassUIBaseColorScale,
+} from "./utils/create-kickass-ui-base-color-scale";
+export {
+    createKickassUIColorScale,
+    type CreateKickassUIColorScaleOptions,
+    type CreateKickassUIColorScaleReturnType,
+} from "./utils/create-kickass-ui-color-scale";
+export {
+    createKickassUITheme,
+    type CreateKickassUIThemeOptions,
+} from "./utils/create-kickass-ui-theme";
+
+export type CreateKickassUIPresetOptions = {
+    accentColor: KickassUIBaseColorScale;
+    neutralColor: KickassUIBaseColorScale;
+    additionalColors?: Array<KickassUIAdditionalColorScale>;
+};
 
 export * from "./base-color-scales";
 export * from "./themes";
-export * from "./types";
-export * from "./utils";

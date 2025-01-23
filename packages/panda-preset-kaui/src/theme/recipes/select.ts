@@ -1,9 +1,9 @@
-import { selectAnatomy } from "@ark-ui/react/select";
+import { anatomy } from "@ark-ui/anatomy/select";
 import { defineSlotRecipe } from "@pandacss/dev";
 
 export const select = defineSlotRecipe({
     className: "select",
-    slots: selectAnatomy.keys(),
+    slots: anatomy.keys(),
     jsx: ["Select", "SelectRoot"],
     base: {
         root: {

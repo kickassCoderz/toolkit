@@ -1,7 +1,7 @@
-import { dialogAnatomy } from "@ark-ui/react";
+import { anatomy } from "@ark-ui/anatomy/dialog";
 import { defineSlotRecipe } from "@pandacss/dev";
 
-const drawerAnatomy = dialogAnatomy.extendWith("body", "header", "footer");
+const drawerAnatomy = anatomy.extendWith("body", "header", "footer");
 
 const drawerSizeVariable = "--drawer-size";
 

@@ -1,4 +1,4 @@
-import { tooltipAnatomy } from "@ark-ui/react/tooltip";
+import { anatomy } from "@ark-ui/anatomy/tooltip";
 import { defineSlotRecipe } from "@pandacss/dev";
 
 const arrowBackgroundVariable = "--arrow-background";
@@ -6,7 +6,7 @@ const arrowSizeVariable = "--arrow-size";
 
 export const tooltip = defineSlotRecipe({
     className: "tooltip",
-    slots: tooltipAnatomy.keys(),
+    slots: anatomy.keys(),
     jsx: ["Tooltip", "TooltipRoot"],
     base: {
         trigger: {},

@@ -1,9 +1,9 @@
-import { menuAnatomy } from "@ark-ui/react/menu";
+import { anatomy } from "@ark-ui/anatomy/menu";
 import { defineSlotRecipe } from "@pandacss/dev";
 
 export const menu = defineSlotRecipe({
     className: "menu",
-    slots: menuAnatomy.keys(),
+    slots: anatomy.keys(),
     jsx: ["Menu", "MenuRoot"],
     base: {
         positioner: {},

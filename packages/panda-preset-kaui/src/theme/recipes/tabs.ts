@@ -1,9 +1,9 @@
-import { tabsAnatomy } from "@ark-ui/react/tabs";
+import { anatomy } from "@ark-ui/anatomy/tabs";
 import { defineSlotRecipe } from "@pandacss/dev";
 
 export const tabs = defineSlotRecipe({
     className: "tabs",
-    slots: tabsAnatomy.extendWith("triggerInner").keys(),
+    slots: anatomy.extendWith("triggerInner").keys(),
     jsx: ["Tabs", "TabsRoot"],
     base: {
         root: {

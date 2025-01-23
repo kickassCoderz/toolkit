@@ -1,7 +1,7 @@
-import type { KickassUIBaseColorScale } from "../types";
+import type { KickassUIBaseColorScale } from "./create-kickass-ui-base-color-scale";
 import { createKickassUIColorScale } from "./create-kickass-ui-color-scale";
 
-type CreateKickassUIThemeOptions = {
+export type CreateKickassUIThemeOptions = {
     name: string;
     accentColor: KickassUIBaseColorScale;
     neutralColor: KickassUIBaseColorScale;

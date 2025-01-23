@@ -1,6 +1,6 @@
-import type { KickassUIBaseColorScale } from "../types";
+import type { KickassUIBaseColorScale } from "./create-kickass-ui-base-color-scale";
 
-type CreateKickassUIColorScaleReturnType<
+export type CreateKickassUIColorScaleReturnType<
     TScaleName extends string,
     TBaseScale extends KickassUIBaseColorScale,
 > = {
@@ -234,7 +234,7 @@ type CreateKickassUIColorScaleReturnType<
     };
 };
 
-type CreateKickassUIColorScaleOptions<
+export type CreateKickassUIColorScaleOptions<
     TScaleName extends string,
     TBaseScale extends KickassUIBaseColorScale,
 > = {

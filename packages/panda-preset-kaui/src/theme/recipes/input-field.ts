@@ -1,9 +1,9 @@
-import { fieldAnatomy } from "@ark-ui/react/field";
+import { anatomy } from "@ark-ui/anatomy/field";
 import { defineSlotRecipe } from "@pandacss/dev";
 
 export const inputField = defineSlotRecipe({
     className: "input-field",
-    slots: fieldAnatomy.extendWith("labelContainer").keys(),
+    slots: anatomy.extendWith("labelContainer").keys(),
     jsx: ["InputField", "InputFieldRoot"],
     base: {
         root: {

@@ -1,9 +1,9 @@
-import { switchAnatomy } from "@ark-ui/react/switch";
+import { anatomy } from "@ark-ui/anatomy/switch";
 import { defineSlotRecipe } from "@pandacss/dev";
 
 export const switchRecipe = defineSlotRecipe({
     className: "switch",
-    slots: switchAnatomy.keys(),
+    slots: anatomy.keys(),
     jsx: ["Switch", "SwitchRoot"],
     base: {
         root: {

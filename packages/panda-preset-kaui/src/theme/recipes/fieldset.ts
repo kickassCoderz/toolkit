@@ -1,9 +1,9 @@
-import { fieldsetAnatomy } from "@ark-ui/react/fieldset";
+import { anatomy } from "@ark-ui/anatomy/fieldset";
 import { defineSlotRecipe } from "@pandacss/dev";
 
 export const fieldset = defineSlotRecipe({
     className: "fieldset",
-    slots: fieldsetAnatomy.extendWith("legendContainer", "content").keys(),
+    slots: anatomy.extendWith("legendContainer", "content").keys(),
     jsx: ["Fieldset", "FieldsetRoot"],
     base: {
         root: {

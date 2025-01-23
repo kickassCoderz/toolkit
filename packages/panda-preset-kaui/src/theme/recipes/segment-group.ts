@@ -1,4 +1,4 @@
-import { segmentGroupAnatomy } from "@ark-ui/react/segment-group";
+import { anatomy } from "@ark-ui/anatomy/segment-group";
 import { defineSlotRecipe } from "@pandacss/dev";
 
 const rootRadiusVariable = "--segment-group-root-radius";
@@ -7,7 +7,7 @@ const indicatorRadiusVariable = "--segment-group-indicator-radius";
 
 export const segmentGroup = defineSlotRecipe({
     className: "segment-group",
-    slots: segmentGroupAnatomy.keys(),
+    slots: anatomy.keys(),
     jsx: ["SegmentGroupRoot", "SegmentGroup"],
     base: {
         root: {

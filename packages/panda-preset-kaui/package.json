@@ -2,6 +2,7 @@
     "name": "@kickass-coderz/panda-preset-kaui",
     "version": "0.0.0",
     "license": "MIT",
+    "sideEffects": false,
     "type": "module",
     "exports": {
         "import": {
@@ -10,7 +11,7 @@
         }
     },
     "files": [
-        "dist/**"
+        "dist"
     ],
     "scripts": {
         "build": "tsup",
@@ -19,19 +20,18 @@
         "lint": "eslint . --max-warnings 0"
     },
     "dependencies": {
-        "@ark-ui/react": "4.8.1",
-        "@pandacss/dev": "0.51.1",
+        "@ark-ui/anatomy": "3.5.0",
         "@radix-ui/colors": "3.0.0"
     },
     "devDependencies": {
         "@kickass-coderz/eslint-config": "workspace:*",
         "@kickass-coderz/ts-config": "workspace:*",
+        "@pandacss/dev": "0.51.1",
         "typescript": "^5.7.2",
         "typescript-eslint": "^8.19.0"
     },
     "peerDependencies": {
-        "@ark-ui/react": "4.8.1",
-        "@pandacss/dev": "0.51.1"
+        "@pandacss/dev": ">=0.51.1 <1"
     },
     "publishConfig": {
         "access": "public"

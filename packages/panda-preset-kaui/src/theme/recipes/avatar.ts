@@ -1,11 +1,11 @@
-import { avatarAnatomy } from "@ark-ui/react/avatar";
+import { anatomy } from "@ark-ui/anatomy/avatar";
 import { defineSlotRecipe } from "@pandacss/dev";
 
 const radiusVariable = "--avatar-radius";
 
 export const avatar = defineSlotRecipe({
     className: "avatar",
-    slots: avatarAnatomy.keys(),
+    slots: anatomy.keys(),
     jsx: ["Avatar", "AvatarRoot"],
 
     base: {

@@ -1,11 +1,11 @@
-import { numberInputAnatomy } from "@ark-ui/react/number-input";
+import { anatomy } from "@ark-ui/anatomy/number-input";
 import { defineSlotRecipe } from "@pandacss/dev";
 
 const borderRadiusVariable = "--number-input-radius";
 
 export const numberInput = defineSlotRecipe({
     className: "number-input",
-    slots: numberInputAnatomy.keys(),
+    slots: anatomy.keys(),
     jsx: ["NumberInput", "NumberInputRoot"],
     base: {
         root: {
