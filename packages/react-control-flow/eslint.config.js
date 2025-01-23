@@ -1,6 +1,7 @@
 import {
     base,
     browser,
+    node,
     prettier,
     react,
     tsTypecheckDisabled,
@@ -20,8 +21,16 @@ export default tseslint.config(
         },
     },
     {
+        name: "Configs",
+        files: ["*.config.{ts,js,mjs,cjs}"],
+        extends: [node],
+    },
+    {
         files: ["**/*.{js,cjs,mjs}"],
         extends: [tsTypecheckDisabled],
     },
-    prettier
+    prettier,
+    {
+        ignores: ["dist"],
+    }
 );

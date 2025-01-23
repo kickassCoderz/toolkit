@@ -3,9 +3,9 @@
     "display": "react-control-flow",
     "extends": "@kickass-coderz/ts-config/base.json",
     "compilerOptions": {
-        "jsx": "preserve",
+        "jsx": "react-jsx",
         "lib": ["ESNext", "DOM", "DOM.Iterable"]
     },
-    "include": ["src"],
+    "include": ["src", "tsup.config.ts"],
     "exclude": ["node_modules"]
 }
