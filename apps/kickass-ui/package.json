@@ -8,7 +8,8 @@
     "author": "",
     "type": "module",
     "scripts": {
-        "build": "vinxi build",
+        "build": "pnpm build:content && vinxi build",
+        "build:content": "velite",
         "dev": "vinxi dev",
         "dev:content": "velite --watch",
         "lint": "eslint .  --max-warnings 0",
