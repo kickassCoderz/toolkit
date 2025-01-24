@@ -44,11 +44,10 @@
         "./styled-system/styles.css": "./styled-system/styles.css"
     },
     "scripts": {
-        "build": "tsup",
+        "build": "panda codegen && tsup",
         "check-types": "tsc --noEmit",
         "dev": "tsup --watch",
-        "lint": "eslint . --max-warnings 0",
-        "prepare": "panda codegen"
+        "lint": "eslint . --max-warnings 0"
     },
     "dependencies": {
         "@base-ui-components/react": "^1.0.0-alpha.5",
