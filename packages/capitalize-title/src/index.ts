@@ -160,13 +160,13 @@ function parseMatch(match: string): string | undefined {
     const firstCharacterHasParens = parensRegexp.test(firstCharacter);
 
     if (firstCharacterHasParens) {
-        // parens shouldn be replaced
+        // parens shouldn't be replaced
         return undefined;
     }
 
     const whitespaceRegexp = new RegExp(/\s/);
 
-    // test first character
+    // test if first character is whitespace
     const firstCharacterHasWhitespace = whitespaceRegexp.test(firstCharacter);
 
     if (firstCharacterHasWhitespace) {
@@ -176,24 +176,6 @@ function parseMatch(match: string): string | undefined {
 
     return match;
 }
-
-//  (m, lead = "", forced, lower, rest, offset, string) => {
-//             const isLastWord = m.length + offset >= string.length;
-
-//             const parsedMatch = parseMatch(m);
-//             if (!parsedMatch) {
-//                 return m;
-//             }
-//             if (!forced) {
-//                 const fullLower = lower + rest;
-
-//                 if (lowerCase.has(fullLower) && !isLastWord) {
-//                     return parsedMatch;
-//                 }
-//             }
-
-//             return lead + (lower || forced).toUpperCase() + rest;
-//         })
 
 function replacer(
     match: string,
@@ -236,16 +218,19 @@ export type CapitalizeTitleOptions = {
  * @param options - The options to use. {@link CapitalizeTitleOptions.special | special} is an array of special words to escape.
  * @returns The capitalized string.
  */
-export function capitalizeTitle(stringToCapitalize: string, options: CapitalizeTitleOptions = {}) {
-    stringToCapitalize = stringToCapitalize.toLowerCase().replaceAll(regex, replacer);
+export function capitalizeTitle(
+    stringToCapitalize: string,
+    options: CapitalizeTitleOptions = {}
+): string {
+    let capitalizedString = stringToCapitalize.toLowerCase().replaceAll(regex, replacer);
 
     const customSpecials = options.special ?? [];
     const specialsToReplace = [...SPECIALS, ...customSpecials];
     const replaceRegExp = convertToRegExp(specialsToReplace);
 
     for (const [pattern, s] of replaceRegExp) {
-        stringToCapitalize = stringToCapitalize.replace(pattern, s);
+        capitalizedString = capitalizedString.replace(pattern, s);
     }
 
-    return stringToCapitalize;
+    return capitalizedString;
 }
