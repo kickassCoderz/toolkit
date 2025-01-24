@@ -1,0 +1,21 @@
+{
+    "name": "@kickass-coderz/typescript-utils",
+    "version": "0.0.0",
+    "license": "MIT",
+    "sideEffects": false,
+    "type": "module",
+    "types": "./index.d.ts",
+    "scripts": {
+        "build": "tsup",
+        "check-types": "tsc --noEmit",
+        "dev": "tsup --watch",
+        "lint": "eslint . --max-warnings 0"
+    },
+    "devDependencies": {
+        "@kickass-coderz/eslint-config": "workspace:*",
+        "@kickass-coderz/ts-config": "workspace:*"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}
