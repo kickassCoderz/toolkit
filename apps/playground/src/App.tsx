@@ -2,32 +2,13 @@ import { Badge } from "@kickass-coderz/kaui-react/components/badge";
 import "./index.css";
 
 import { Button } from "@kickass-coderz/kaui-react/components/button";
-import { css, cva } from "@kickass-coderz/kaui-react/styled-system/css";
+import { css } from "@kickass-coderz/kaui-react/styled-system/css";
 import { Container } from "@kickass-coderz/kaui-react/styled-system/jsx";
 
 const boxStyles = css({
     width: "20",
     height: "20",
     backgroundColor: "accent.9",
-});
-
-const myButtonStyles = cva({
-    base: {
-        paddingY: "2",
-        paddingX: "4",
-    },
-    variants: {
-        variant: {
-            primary: {
-                backgroundColor: "accent.9",
-                color: "accent.contrast",
-            },
-            secondary: {
-                backgroundColor: "accent.5",
-                color: "accent.11",
-            },
-        },
-    },
 });
 
 // const MyButton = styled(SlotableButton, myButtonStyles, {
