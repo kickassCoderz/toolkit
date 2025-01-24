@@ -1,131 +1,78 @@
-import { Button } from "@kickass-coderz/kaui-react/components/button";
+import { Badge } from "@kickass-coderz/kaui-react/components/badge";
 import "./index.css";
 
-import { css } from "@kickass-coderz/kaui-react/system/css";
+import { Button } from "@kickass-coderz/kaui-react/components/button";
+import { css, cva } from "@kickass-coderz/kaui-react/styled-system/css";
+import { Container } from "@kickass-coderz/kaui-react/styled-system/jsx";
 
-import { HStack, Stack } from "@kickass-coderz/kaui-react/system/jsx";
-
-const box = css({
-    width: "10",
-    height: "10",
+const boxStyles = css({
+    width: "20",
+    height: "20",
     backgroundColor: "accent.9",
 });
+
+const myButtonStyles = cva({
+    base: {
+        paddingY: "2",
+        paddingX: "4",
+    },
+    variants: {
+        variant: {
+            primary: {
+                backgroundColor: "accent.9",
+                color: "accent.contrast",
+            },
+            secondary: {
+                backgroundColor: "accent.5",
+                color: "accent.11",
+            },
+        },
+    },
+});
+
+// const MyButton = styled(SlotableButton, myButtonStyles, {
+//     defaultProps: {
+//         variant: "primary",
+//         type: "button",
+//     },
+// });
+
 function App() {
     return (
-        <div>
-            <div className={box}></div>
-            <Button size="xs">Extra Small</Button>
-            <Button>Default</Button>
-            <Button variant="soft" size="lg">
-                Soft
+        <Container
+            css={{
+                width: "full",
+                height: "viewportHeight",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "4",
+            }}
+        >
+            <div className={boxStyles}>B</div>
+            <Button>BUTTON</Button>
+            <Button highContrast variant="soft">
+                Button
             </Button>
-            {/* <Stack>
-                <HStack>
-                    <Button
-                        highContrast={false}
-                        size="lg"
-                        radius="rounded"
-                        justify="center"
-                        fullWidth={false}
-                        variant="solid"
-                    >
-                        Button
-                    </Button>
-                    <Button
-                        highContrast={false}
-                        size="lg"
-                        radius="rounded"
-                        justify="center"
-                        fullWidth={false}
-                        variant="soft"
-                    >
-                        Button
-                    </Button>
-                    <Button
-                        highContrast={false}
-                        size="lg"
-                        radius="rounded"
-                        justify="center"
-                        fullWidth={false}
-                        variant="outlined"
-                    >
-                        Button
-                    </Button>
-                    <Button
-                        highContrast={false}
-                        size="lg"
-                        radius="rounded"
-                        justify="center"
-                        fullWidth={false}
-                        variant="surface"
-                    >
-                        Button
-                    </Button>
-                    <Button
-                        highContrast={false}
-                        size="lg"
-                        radius="rounded"
-                        justify="center"
-                        fullWidth={false}
-                        variant="ghost"
-                    >
-                        Button
-                    </Button>
-                </HStack>
-                <HStack>
-                    <Button
-                        highContrast
-                        size="lg"
-                        radius="rounded"
-                        justify="center"
-                        fullWidth={false}
-                        variant="solid"
-                    >
-                        Button
-                    </Button>
-                    <Button
-                        highContrast
-                        size="lg"
-                        radius="rounded"
-                        justify="center"
-                        fullWidth={false}
-                        variant="soft"
-                    >
-                        Button
-                    </Button>
-                    <Button
-                        highContrast
-                        size="lg"
-                        radius="rounded"
-                        justify="center"
-                        fullWidth={false}
-                        variant="outlined"
-                    >
-                        Button
-                    </Button>
-                    <Button
-                        highContrast
-                        size="lg"
-                        radius="rounded"
-                        justify="center"
-                        fullWidth={false}
-                        variant="surface"
-                    >
-                        Button
-                    </Button>
-                    <Button
-                        highContrast
-                        size="lg"
-                        radius="rounded"
-                        justify="center"
-                        fullWidth={false}
-                        variant="ghost"
-                    >
-                        Button
-                    </Button>
-                </HStack>
-            </Stack> */}
-        </div>
+            <Badge variant="surface" size="xs" radius="full">
+                Badge
+            </Badge>
+            {/* <Button
+                type="button"
+                variant="solid"
+                highContrast={false}
+                radius="rounded"
+                size="md"
+                render={<span data-drek />}
+            >
+                Click me
+            </Button> */}
+            {/* <MyButton variant="primary" render={<span />}>
+                Button
+            </MyButton>
+            <MyButton variant="secondary">Button</MyButton> */}
+        </Container>
     );
 }
 

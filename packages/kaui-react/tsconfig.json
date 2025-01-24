@@ -1,0 +1,14 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "display": "kaui-react",
+    "extends": "@kickass-coderz/ts-config/base.json",
+    "compilerOptions": {
+        "jsx": "react-jsx",
+        "lib": ["ESNext", "DOM", "DOM.Iterable"],
+        "paths": {
+            "@kickass-coderz/kaui-react/styled-system/*": ["./styled-system/*"]
+        }
+    },
+    "include": ["src", "tsup.config.ts", "panda.config.ts", "styled-system"],
+    "exclude": ["node_modules"]
+}
