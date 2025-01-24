@@ -8,7 +8,7 @@
     "author": "",
     "type": "module",
     "scripts": {
-        "build": "vinxi build",
+        "build": "panda codegen && vinxi build",
         "dev": "vinxi dev",
         "lint": "eslint .  --max-warnings 0",
         "start": "vinxi start"
