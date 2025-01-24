@@ -1,9 +1,9 @@
-import { radioGroupAnatomy } from "@ark-ui/react/radio-group";
+import { anatomy } from "@ark-ui/anatomy/radio-group";
 import { defineSlotRecipe } from "@pandacss/dev";
 
 export const radioCardGroup = defineSlotRecipe({
     className: "radio-card-group",
-    slots: radioGroupAnatomy.keys(),
+    slots: anatomy.keys(),
     jsx: ["RadioCardGroup", "RadioCardGroupRoot"],
     base: {
         root: {},

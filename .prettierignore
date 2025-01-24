@@ -1,5 +1,6 @@
 pnpm-lock.yaml
-app/routeTree.gen.ts
+routeTree.gen.ts
 .output
 .vinxi
+.velite
 styled-system

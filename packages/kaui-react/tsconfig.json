@@ -9,6 +9,6 @@
             "@kickass-coderz/kaui-react/styled-system/*": ["./styled-system/*"]
         }
     },
-    "include": ["src", "tsup.config.ts", "panda.config.ts", "styled-system"],
+    "include": ["src", "tsup.config.ts", "panda.config.ts"],
     "exclude": ["node_modules"]
 }
