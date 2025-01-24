@@ -1,0 +1,11 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "display": "typescript-utils",
+    "extends": "@kickass-coderz/ts-config/base",
+    "compilerOptions": {
+        "lib": ["ESNext"],
+        "types": []
+    },
+    "include": ["src", "index.d.ts"],
+    "exclude": ["node_modules"]
+}

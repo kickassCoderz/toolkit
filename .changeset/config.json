@@ -1,0 +1,17 @@
+{
+    "$schema": "https://unpkg.com/@changesets/config@3.0.5/schema.json",
+    "changelog": "@changesets/cli/changelog",
+    "commit": false,
+    "fixed": [],
+    "linked": [
+        [
+            "@kickass-coderz/kaui-react",
+            "@kickass-coderz/panda-preset-kaui",
+            "@kickass-coderz/react-slotable"
+        ]
+    ],
+    "access": "public",
+    "baseBranch": "main",
+    "updateInternalDependencies": "patch",
+    "ignore": []
+}

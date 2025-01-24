@@ -1,0 +1,76 @@
+{
+    "name": "@kickass-coderz/kaui-react",
+    "version": "0.0.0",
+    "license": "MIT",
+    "sideEffects": false,
+    "type": "module",
+    "exports": {
+        "./preset": {
+            "types": "./dist/preset.d.ts",
+            "import": "./dist/preset.js"
+        },
+        "./components/*": {
+            "types": "./dist/components/*/index.d.ts",
+            "import": "./dist/components/*/index.js"
+        },
+        "./styled-system/css": {
+            "types": "./styled-system/css/index.d.ts",
+            "import": "./styled-system/css/index.js"
+        },
+        "./styled-system/tokens": {
+            "types": "./styled-system/tokens/index.d.ts",
+            "import": "./styled-system/tokens/index.js"
+        },
+        "./styled-system/types": {
+            "types": "./styled-system/types/index.d.ts",
+            "import": "./styled-system/types/index.js"
+        },
+        "./styled-system/patterns": {
+            "types": "./styled-system/patterns/index.d.ts",
+            "import": "./styled-system/patterns/index.js"
+        },
+        "./styled-system/recipes": {
+            "types": "./styled-system/recipes/index.d.ts",
+            "import": "./styled-system/recipes/index.js"
+        },
+        "./styled-system/jsx": {
+            "types": "./styled-system/jsx/index.d.ts",
+            "import": "./styled-system/jsx/index.js"
+        },
+        "./styled-system/themes": {
+            "types": "./styled-system/themes/index.d.ts",
+            "import": "./styled-system/themes/index.js"
+        },
+        "./styled-system/styles.css": "./styled-system/styles.css"
+    },
+    "scripts": {
+        "build": "tsup",
+        "check-types": "tsc --noEmit",
+        "dev": "tsup --watch",
+        "lint": "eslint . --max-warnings 0",
+        "prepare": "panda codegen"
+    },
+    "dependencies": {
+        "@base-ui-components/react": "^1.0.0-alpha.5",
+        "@kickass-coderz/panda-preset-kaui": "workspace:*",
+        "@kickass-coderz/react-slotable": "workspace:*"
+    },
+    "devDependencies": {
+        "@kickass-coderz/eslint-config": "workspace:*",
+        "@kickass-coderz/ts-config": "workspace:*",
+        "@pandacss/dev": "^0.51.1"
+    },
+    "peerDependencies": {
+        "@pandacss/dev": ">=0.51.1 <1",
+        "@types/react": "^19",
+        "react": "^19"
+    },
+    "peerDependenciesMeta": {
+        "@types/react": {
+            "optional": true
+        }
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}

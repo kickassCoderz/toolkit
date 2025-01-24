@@ -122,6 +122,21 @@ const tsTypechecked = tseslint.config({
                 default: "generic",
             },
         ],
+        "@typescript-eslint/no-import-type-side-effects": "error",
+        "@typescript-eslint/consistent-type-imports": [
+            "error",
+            {
+                prefer: "type-imports",
+                fixStyle: "separate-type-imports",
+                disallowTypeAnnotations: true,
+            },
+        ],
+        "@typescript-eslint/consistent-type-exports": [
+            "error",
+            {
+                fixMixedExportsWithInlineTypeSpecifier: false,
+            },
+        ],
     },
 });
 

@@ -3,6 +3,7 @@
     "version": "0.0.0",
     "description": "KickassCoderz's Prettier config for Javascript and Typescript projects",
     "license": "MIT",
+    "sideEffects": false,
     "type": "module",
     "exports": "./index.js",
     "scripts": {

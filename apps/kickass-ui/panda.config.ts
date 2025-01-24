@@ -1,4 +1,4 @@
-import { createKickassUIPreset, mauve, plum } from "@kickass-coderz/panda-preset-kickass";
+import { createKickassUIPreset, mauve, plum } from "@kickass-coderz/panda-preset-kaui";
 import { defineConfig } from "@pandacss/dev";
 
 const kickassPreset = createKickassUIPreset({
