@@ -1,0 +1,34 @@
+{
+    "name": "@kickass-coderz/react-slotable",
+    "version": "0.0.0",
+    "license": "MIT",
+    "sideEffects": false,
+    "type": "module",
+    "exports": {
+        "types": "./dist/index.d.ts",
+        "import": "./dist/index.js"
+    },
+    "scripts": {
+        "build": "tsup",
+        "check-types": "tsc --noEmit",
+        "dev": "tsup --watch",
+        "lint": "eslint . --max-warnings 0"
+    },
+    "devDependencies": {
+        "@kickass-coderz/eslint-config": "workspace:*",
+        "@kickass-coderz/ts-config": "workspace:*",
+        "@kickass-coderz/typescript-utils": "workspace:*"
+    },
+    "peerDependencies": {
+        "@types/react": "^19",
+        "react": "^19"
+    },
+    "peerDependenciesMeta": {
+        "@types/react": {
+            "optional": true
+        }
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}
