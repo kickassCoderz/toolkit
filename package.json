@@ -4,6 +4,7 @@
     "scripts": {
         "build": "turbo build",
         "changeset": "changeset",
+        "check-types": "turbo check-types",
         "clean": "turbo clean",
         "commit": "cz",
         "dev": "turbo dev",
