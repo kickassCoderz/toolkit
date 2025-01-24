@@ -3,6 +3,7 @@
     "version": "0.0.0",
     "description": "KickassCoderz's EsLint config's for JS/TS ecosystem",
     "license": "MIT",
+    "sideEffects": false,
     "type": "module",
     "exports": "./index.js",
     "scripts": {
