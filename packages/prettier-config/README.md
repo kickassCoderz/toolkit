@@ -1,0 +1,1 @@
+# KickassCoderz Prettier config
