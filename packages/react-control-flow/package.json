@@ -22,6 +22,9 @@
             "import": "./dist/matcher.js"
         }
     },
+    "files": [
+        "dist"
+    ],
     "scripts": {
         "build": "tsup",
         "check-types": "tsc --noEmit",
