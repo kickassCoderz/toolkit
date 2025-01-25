@@ -173,3 +173,29 @@ export const brownTheme = createKickassUITheme({
     neutralColor: sand,
 });
 ////////// SAND NEUTRAL COLOR //////////
+
+export const allThemes = {
+    ...tomatoTheme,
+    ...redTheme,
+    ...rubyTheme,
+    ...crimsonTheme,
+    ...pinkTheme,
+    ...plumTheme,
+    ...purpleTheme,
+    ...violetTheme,
+    ...irisTheme,
+    ...indigoTheme,
+    ...blueTheme,
+    ...skyTheme,
+    ...cyanTheme,
+    ...mintTheme,
+    ...tealTheme,
+    ...jadeTheme,
+    ...greenTheme,
+    ...grassTheme,
+    ...limeTheme,
+    ...yellowTheme,
+    ...amberTheme,
+    ...orangeTheme,
+    ...brownTheme,
+};

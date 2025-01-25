@@ -43,6 +43,11 @@
         },
         "./styled-system/styles.css": "./styled-system/styles.css"
     },
+    "files": [
+        "dist",
+        "src",
+        "styled-system"
+    ],
     "scripts": {
         "build": "panda codegen && tsup",
         "check-types": "tsc --noEmit",
