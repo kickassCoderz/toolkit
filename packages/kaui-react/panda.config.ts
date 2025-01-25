@@ -18,6 +18,7 @@ export default defineConfig({
     theme: {
         extend: {},
     },
+    themes: {},
 
     // The output directory for your css system
     outdir: "styled-system",
@@ -25,4 +26,6 @@ export default defineConfig({
     jsxFramework: "react",
     jsxStyleProps: "minimal",
     outExtension: "js",
+    lightningcss: true,
+    clean: true,
 });

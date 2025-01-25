@@ -45,7 +45,8 @@
     },
     "files": [
         "dist",
-        "src"
+        "src",
+        "styled-system"
     ],
     "scripts": {
         "build": "panda codegen && tsup",
